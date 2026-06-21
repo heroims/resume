@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>赵易奇 · 研发全栈工程师</title>
+<style>
+:root {
+  --bg:      oklch(99% 0.002 240);
+  --surface: oklch(100% 0 0);
+  --fg:      oklch(18% 0.012 250);
+  --muted:   oklch(54% 0.012 250);
+  --border:  oklch(92% 0.005 250);
+  --accent:  oklch(58% 0.18 255);
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+  --nav-h: 60px;
+}
+[data-theme="dark"] {
+  --bg:      oklch(14% 0.006 250);
+  --surface: oklch(18% 0.008 250);
+  --fg:      oklch(90% 0.006 250);
+  --muted:   oklch(56% 0.008 250);
+  --border:  oklch(26% 0.008 250);
+  --accent:  oklch(65% 0.18 255);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+a:hover { opacity: .72; }
+
+nav {
+  position: fixed; inset: 0 0 auto 0; height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 64px);
+  background: rgba(255,255,255,.82); backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  font-size: 14px; letter-spacing: -.01em;
+}
+nav .logo { font-weight: 600; font-size: 15px; color: var(--fg); }
+nav .logo span { color: var(--muted); }
+nav .links { display: flex; gap: 24px; list-style: none; }
+nav .links a { color: var(--muted); font-weight: 450; }
+nav .links a:hover { color: var(--fg); }
+
+section { padding: 80px clamp(20px, 5vw, 64px); max-width: 1120px; margin: 0 auto; }
+.section-label {
+  font: 600 12px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+h2 {
+  font: 600 clamp(28px, 4vw, 40px)/1.15 var(--font-display);
+  letter-spacing: -.02em; margin-bottom: 32px;
+}
+h3 {
+  font: 600 20px/1.3 var(--font-display);
+  letter-spacing: -.01em; margin-bottom: 8px;
+}
+
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; padding-top: calc(var(--nav-h) + 48px);
+  max-width: 800px;
+}
+.hero .eyebrow {
+  font: 450 13px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px;
+}
+.hero h1 {
+  font: 700 clamp(40px, 6vw, 64px)/1.05 var(--font-display);
+  letter-spacing: -.025em; margin-bottom: 20px;
+}
+.hero .tagline {
+  font-size: clamp(17px, 2vw, 20px); color: var(--muted);
+  max-width: 62ch; margin-bottom: 40px; line-height: 1.6;
+}
+.hero .tagline strong { color: var(--fg); font-weight: 510; }
+.hero .actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero .actions a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 8px;
+  font-size: 14px; font-weight: 510; letter-spacing: -.01em;
+  border: 1px solid var(--border); color: var(--fg);
+  transition: background .2s, border-color .2s;
+}
+.hero .actions a:hover { background: var(--border); border-color: var(--muted); opacity: 1; }
+.hero .actions a.primary { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+.hero .actions a.primary:hover { opacity: .88; }
+.hero .actions a .icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+.stats-bar {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px; margin-top: 48px; padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.stats-bar dt { font: 600 28px/1 var(--font-display); letter-spacing: -.02em; color: var(--fg); }
+.stats-bar dd { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+.directions { display: grid; gap: 24px; }
+.direction-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 32px; cursor: pointer;
+  transition: box-shadow .25s, border-color .25s;
+}
+.direction-card:hover { border-color: var(--muted); box-shadow: 0 8px 30px rgba(0,0,0,.04); }
+.direction-card .card-header { cursor: default; }
+.direction-card .card-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
+}
+.direction-card .card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: grid; place-items: center; flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.direction-card .card-icon svg { width: 20px; height: 20px; stroke: var(--fg); fill: none; stroke-width: 1.8; }
+.direction-card h3 { margin-bottom: 0; }
+.direction-card .card-desc { color: var(--muted); font-size: 14px; margin-bottom: 20px; max-width: 70ch; }
+.direction-card .proj-list { display: grid; gap: 12px; }
+.direction-card .proj-item {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 12px 16px; border-radius: 8px;
+  background: var(--bg); border: 1px solid var(--border);
+  font-size: 14px;
+}
+.direction-card .proj-item .proj-name { font-weight: 510; color: var(--fg); }
+.direction-card .proj-item .proj-desc { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.direction-card .proj-item .proj-tech {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;
+}
+.direction-card .proj-item .proj-tech span {
+  font: 400 11px/1 var(--font-mono); letter-spacing: .01em;
+  padding: 3px 8px; border-radius: 4px;
+  background: var(--border); color: var(--muted);
+}
+.direction-card .proj-item .proj-links { margin-top: 4px; }
+.direction-card .proj-item .proj-links a {
+  font-size: 12px; font-weight: 510; margin-right: 12px;
+}
+
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+  width: 1px; background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 36px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -24px; top: 7px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--accent);
+}
+.timeline-item .period {
+  font: 450 13px/1 var(--font-body); color: var(--muted);
+  letter-spacing: -.01em; margin-bottom: 4px;
+}
+.timeline-item .role { font-weight: 600; font-size: 16px; }
+.timeline-item .company { color: var(--muted); font-size: 14px; }
+.timeline-item .highlights { margin-top: 8px; font-size: 14px; color: var(--muted); line-height: 1.6; }
+.timeline-item .highlights li { margin-left: 1.2em; margin-bottom: 2px; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+.skill-group h4 { font: 600 13px/1 var(--font-body); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.skill-group .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-group .tags span {
+  font: 400 12px/1 var(--font-mono); letter-spacing: .01em;
+  padding: 5px 10px; border-radius: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--fg);
+}
+
+.contact-links { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 24px; }
+.contact-links a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fg); }
+.contact-links a svg { width: 18px; height: 18px; stroke: var(--muted); fill: none; stroke-width: 1.8; }
+
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+.edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
+.edu-card p { font-size: 15px; margin: 0; }
+.edu-card p:first-child { font-weight: 600; }
+.edu-card .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+footer {
+  text-align: center; padding: 40px clamp(20px, 5vw, 64px);
+  font-size: 12px; color: var(--muted); border-top: 1px solid var(--border);
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Dark-mode nav surface */
+[data-theme="dark"] nav { background: rgba(18,18,22,.88); }
+.theme-toggle {
+  width: 36px; height: 36px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  display: grid; place-items: center;
+  transition: background .2s, color .2s;
+  font-size: 16px;
+}
+.theme-toggle:hover { background: var(--border); color: var(--fg); }
+
+/* Tab navigation — direction pills */
+.tab-nav {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.tab-pill {
+  padding: 8px 20px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font: 510 14px/1 var(--font-body);
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: -.01em;
+}
+.tab-pill:hover { border-color: var(--muted); color: var(--fg); }
+.tab-pill.active { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Print / PDF */
+@media print {
+  @page { margin: 12mm 16mm; }
+  body { font-size: 11pt; background: #fff !important; color: #000 !important; }
+  nav, .theme-toggle, .deck-counter, .reveal { display: none !important; }
+  section { padding: 20px 0; max-width: 100%; page-break-inside: avoid; }
+  .hero { min-height: auto; padding-top: 20px; }
+  .hero h1 { font-size: 28pt; }
+  .hero .tagline { font-size: 10pt; }
+  .direction-card { break-inside: avoid; border: 1px solid #ddd; padding: 14px 18px; }
+  .tab-panel { display: block !important; }
+  .tab-nav { display: none !important; }
+  .proj-item { break-inside: avoid; }
+  .stats-bar { break-inside: avoid; }
+  .skill-grid { break-inside: avoid; }
+  .timeline-item { break-inside: avoid; }
+  .contact-links a { color: #000 !important; }
+  footer { border-top: 1px solid #ddd; }
+  a { color: #000 !important; text-decoration: underline; }
+  .edu-card { border: 1px solid #ddd; }
+}
+
+@media (max-width: 700px) {
+  nav .links { gap: 14px; font-size: 13px; }
+  section { padding: 56px clamp(16px, 4vw, 24px); }
+  .hero { min-height: auto; padding-top: calc(var(--nav-h) + 32px); }
+  .direction-card { padding: 24px; }
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</head>
+<body>
+
+<nav>
+  <div class="logo">赵易奇 <span>· 研发</span></div>
+  <ul class="links">
+    <li><a href="#directions">方向</a></li>
+    <li><a href="#experience">经历</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="切换暗色模式" title="暗色模式">🌙</button>
+</nav>
+
+<section class="hero" id="hero">
+  <p class="eyebrow">14 年研发 · 全栈 · 多领域</p>
+  <h1>赵易奇</h1>
+  <p class="tagline">
+    6 年后端 + 7 年移动端 + 2 年工业机器人开发经验，
+    期间均为研发核心带队攻坚。<br/>
+    擅长 <strong>Go / Python / Solidity / Node.js / iOS / C++ / C#</strong>，
+    横跨 <strong>AI Agent &amp; 计算机视觉</strong>、<strong>区块链</strong>、
+    <strong>移动端</strong>、<strong>后端架构</strong>、
+    <strong>工业机器人</strong> 五大领域。
+  </p>
+  <p class="tagline" style="margin-top:-20px;font-size:15px;color:var(--muted);max-width:65ch;">
+    最近熟练运用 OpenCode、Codex、Claude Code，配合 MCP 构建链上数据查询智能体。
+    GitHub 开源多个项目，涵盖区块链、移动端、编译混淆、实时渲染等方向。
+  </p>
+  <div class="actions">
+    <a href="https://github.com/heroims" target="_blank" class="primary">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="https://heroims.github.io" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Blog
+    </a>
+    <a href="https://www.linkedin.com/in/%E6%98%93%E5%A5%87-%E8%B5%B5-8aa943aa/" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+  <dl class="stats-bar">
+    <div><dt>14</dt><dd>年研发经验</dd></div>
+    <div><dt>30+</dt><dd>喷涂机器人出货</dd></div>
+    <div><dt>10+</dt><dd>区块链项目</dd></div>
+    <div><dt>20+</dt><dd>移动端产品</dd></div>
+    <div><dt>6+</dt><dd>AI 项目</dd></div>
+  </dl>
+</section>
+
+<section id="directions">
+  <p class="section-label">方向分类</p>
+  <h2>专业方向</h2>
+  <div class="tab-nav">
+    <button class="tab-pill active" data-tab="ai">AI Agent &amp; CV</button>
+    <button class="tab-pill" data-tab="blockchain">区块链 &amp; Web3</button>
+    <button class="tab-pill" data-tab="mobile">移动端开发</button>
+    <button class="tab-pill" data-tab="backend">后端 &amp; 架构</button>
+    <button class="tab-pill" data-tab="robot">工业机器人</button>
+  </div>
+  <div class="tab-panels">
+
+    <div class="tab-panel active" data-tab="ai">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 2 1 3 2 4l-1 3h6l-1-3c1-1 2-2 2-4a4 4 0 0 0-4-4z"/><path d="M8 17h8"/><path d="M10 20h4"/><circle cx="12" cy="7" r="1.5"/></svg>
+          </div>
+          <h3>AI Agent &amp; 计算机视觉</h3>
+        </div>
+        <p class="card-desc">
+          跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、
+          工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。
+        </p>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-name">Agents Report · 跨 Agent 使用统计</span>
+            <span class="proj-desc">
+              采集 Claude Code / Codex / OpenCode / Cursor / Trae / OpenClaw / Hermes 七款 AI Coding Agent
+              使用数据，合并为统一报告并按周/月/季/年归档。附带 Flask Dashboard 与 AI 摘要。
+            </span>
+            <div class="proj-tech"><span>Python</span><span>Flask</span><span>Shell</span><span>HTML</span></div>
+            <div class="proj-links"><a href="https://github.com/heroims/agents-report" target="_blank">GitHub ↗</a></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">Resume Optimizer · AI 简历优化</span>
+            <span class="proj-desc">
+              AI 驱动简历优化工具。支持 PDF/DOCX/HTML/MD 多格式上传，4 种优化模式（轻/中/深/自定义），
+              ATS 评分、原稿对比、交互式对话优化。集成 Stripe &amp; 支付宝支付，中英双语界面。
+            </span>
+            <div class="proj-tech"><span>Next.js</span><span>OpenAI</span><span>PostgreSQL</span><span>Prisma</span><span>Stripe</span></div>
+             <div class="proj-links"><a href="https://resume-optimization-theta.vercel.app/" target="_blank">Demo ↗</a></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">Launchpad · Solana Token Launch Workstation</span>
+            <span class="proj-desc">
+              API-first 发币工作站，支持 pump.fun / Raydium LaunchLab / Meteora DBC 多协议发币。
+              AI 驱动 Token 参数生成、确定性校验、客户端签名，私钥零接触。
+            </span>
+            <div class="proj-tech"><span>TypeScript</span><span>Next.js</span><span>Solana</span><span>AI SDK</span></div>
+            <div class="proj-links"><a href="https://github.com/heroims/launchpad" target="_blank">GitHub ↗</a><a href="https://launchpad-itvb.vercel.app/" target="_blank">Demo ↗</a></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">链上数据查询 Lark Agent</span>
+            <span class="proj-desc">
+              ES + Kafka + Redis + MongoDB + SelectDB + PgSQL 飞书自然语言交互查询系统，
+              支持 OpenCode / Codex + superpowers skill 编排自动化数据解析。
+            </span>
+            <div class="proj-tech"><span>Go</span><span>OpenCode</span><span>ES</span><span>Kafka</span><span>MCP</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">喷涂 AI 视觉识别</span>
+            <span class="proj-desc">
+              基于百度 EasyDL 的 2D 图像识别，自动识别工件类型并切换预设喷涂轨迹，
+              实现不同工件混线生产的全自动适配。
+            </span>
+            <div class="proj-tech"><span>EasyDL</span><span>OpenCV</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">实时人脸识别 &amp; GPU 渲染</span>
+            <span class="proj-desc">
+              iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span><span>OpenGL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="blockchain">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>区块链 &amp; Web3 基建</h3>
+        </div>
+        <p class="card-desc">
+          交易所级 DEX 数据聚合、多链扫描（EVM 扫块 + Solana Yellowstone gRPC）、
+          智能合约、二层网络。主导 DeFi 数据从扫块到落库的全链路工程，支撑高频实时查询。
+        </p>
+        <div class="proj-list">
+           <div class="proj-item">
+             <span class="proj-name">链上数据服务 · DEX 数据聚合</span>
+             <span class="proj-desc">
+               Solana/BSC/Base 内外盘 DEX 数据入库，覆盖 pump、raydium、meteora、orca 等 20+ 协议。
+               EVM 扫块 + Yellowstone gRPC 双通道，Kafka 清洗落库，Redis 实时热点，SelectDB 智能钱分析。
+               K 线方案：早期 DB 直查 → 开高收低 Redis 缓存 + DB 持久化；指标数据 Redis 时间桶聚合。
+             </span>
+             <div class="proj-tech">
+               <span>Go</span><span>Franz-Kafka</span><span>Redis</span><span>MongoDB</span>
+               <span>SelectDB</span><span>PostgreSQL</span><span>Elasticsearch</span>
+             </div>
+             <div class="proj-links"><a href="https://www.bydfi.com/en/moonx/pump" target="_blank">BYDFi MoonX ↗</a></div>
+           </div>
+          <div class="proj-item">
+            <span class="proj-name">Polymarket 预测市场数据</span>
+            <span class="proj-desc">
+              扫块拉取 Polymarket 链上数据，限频调用官方 API 数据入库，跑 DEX 相关逻辑。
+            </span>
+            <div class="proj-tech"><span>Go</span><span>gRPC</span><span>Kafka</span></div>
+          </div>
+           <div class="proj-item">
+             <span class="proj-name">Bitbot · Telegram Meme 交易平台</span>
+             <span class="proj-desc">
+               Base 链 Meme 币托管代购系统。Dexscreener/Geckoterminal 新币数据缓存，托管钱包整合交易，
+               Telegram Bot（Node.js/Render）+ Miniapp（Next.js/Vercel）+ 运营后台 + NestJS 安全跳板（AWS）。
+             </span>
+             <div class="proj-tech">
+               <span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>Redis</span><span>NestJS</span>
+             </div>
+             <div class="proj-links"><a href="https://bitbot.tg/zh" target="_blank">Bitbot ↗</a></div>
+           </div>
+          <div class="proj-item">
+            <span class="proj-name">Meme Coin 多链预购/质押/空投</span>
+            <span class="proj-desc">
+              EVM / TON / Solana 多链预购买、质押、空投分发。BRC20 转账解析，Unisat API 限频优化，
+              Background Worker 异步处理。项目：Poodlana、Bitcoin Dogs、Solciety。
+            </span>
+            <div class="proj-tech"><span>Solidity</span><span>Next.js</span><span>Prisma</span><span>PostgreSQL</span><span>Vercel</span></div>
+            <div class="proj-links"><a href="https://poodlana.com/zh" target="_blank">Poodlana ↗</a><a href="https://bitcoindogs.club/zh" target="_blank">Bitcoin Dogs ↗</a><a href="https://solciety.io/zh" target="_blank">Solciety ↗</a></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">MetaLife · 去中心化社交网络</span>
+            <span class="proj-desc">
+              基于 SSB 协议的无服务器社交 + Spectrum 二层网络（Photon）支付 + 多链钱包。
+              NFT 市场（一口价/拍卖）、DAO（众筹/提案/投票/执行）、Swap（MLT↔SMT 兑换）。
+              BLE 蓝牙通信 + MDNS 局域网节点发现。
+            </span>
+            <div class="proj-tech"><span>React Native</span><span>Go</span><span>Solidity</span><span>BLE</span><span>MDNS</span></div>
+            <div class="proj-links"><a href="https://github.com/MetaLife-Protocol" target="_blank">GitHub ↗</a></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">NostrV · Nostr Flutter 客户端</span>
+            <span class="proj-desc">
+              支持推荐中继、闪电支付、HD Node 创建导入导出账户，覆盖 NIP 1/2/4/6/8/10/18/21/24/32/36/46/47/50/51/56/57/65。
+            </span>
+            <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>Nostr</span></div>
+            <div class="proj-links"><a href="https://github.com/heroims/NostrV" target="_blank">GitHub ↗</a></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">比特儿 · 加密行情</span>
+            <span class="proj-desc">
+              BTC 山寨币行情 App，聚合多所行情数据、K 线图表与资产监控。早期区块链移动端实践。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="mobile">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3>移动端开发</h3>
+        </div>
+        <p class="card-desc">
+          7 年 iOS 原生 + React Native + Flutter 多端架构经验。主导过千万级跨境电商、
+          消费金融、短视频、AR 特效、社交、O2O 等 20+ 产品。
+        </p>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-name">LOOK / LOOKMEN · 跨境电商</span>
+            <span class="proj-desc">
+              LOOK 客户端 1.9.0+ 版本迭代：网络层重构、自动化构建实体和网络层、组件化设计、
+              JSPatch 混淆热更新、Ollvm 混淆、Crash 防御体系、路由设计、iMessage / 3D Touch 商品预览、客服（七鱼/环信）。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>JSPatch</span><span>Ollvm</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">黑卡 · 消费金融</span>
+            <span class="proj-desc">
+              人人友信集团旗下信用消费平台，带领 6 人研发团队完成全套 iOS 客户端。
+              负责架构设计、网络层封装、公共组件、主页/账单/安全设置等核心模块。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>RN</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">24格 · 图片合成视频 / 短视频</span>
+            <span class="proj-desc">
+              独立完成图片合成视频技术攻关（GPUImage GPU 加速），封装 SDK；录音及音频混合、
+              视频添加音轨、预览+生成、VideoKit 流媒体播放、断点上传。项目架构 &amp; 接口设计。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span><span>VideoKit</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">Ollvm 代码混淆编译器</span>
+            <span class="proj-desc">
+              基于 LLVM 5.0 ~ 14.x 制作 Ollvm 混淆工具链，用于保护移动端客户端核心逻辑代码。
+            </span>
+            <div class="proj-tech"><span>C++</span><span>LLVM</span><span>Ollvm</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">SmartMesh · 区块链钱包 + 无网聊天</span>
+            <span class="proj-desc">
+              功能类似微信的区块链钱包，支持无网聊天（MultipeerConnectivity + MDNS）、
+              光子网络（雷电）支付、MDNS 局域网节点发现。
+            </span>
+            <div class="proj-tech"><span>ObjC</span><span>RN</span><span>Ionic</span><span>Cordova</span><span>BLE</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">MeshBox · 路由器矿机控制端</span>
+            <span class="proj-desc">
+              路由器矿机 App，对接公链 Spectrum 和二层网络 Photon。
+              原生端对接 openwrt luci，扩展 Ionic 版支持钱包功能（封装 Cordova 插件对接 web3j / ethers.framework）。
+            </span>
+            <div class="proj-tech"><span>ObjC</span><span>Ionic</span><span>Cordova</span><span>openwrt</span><span>Luci</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">咪呀分享 · 社区导购</span>
+            <span class="proj-desc">
+              购买后分享社区。时间线形式展示，WebView + JS 收藏购买地址，
+              GPUImage 实时渲染相机。独立完成前期研发及项目框架搭建。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">拍几秒 · AR 特效视频</span>
+            <span class="proj-desc">
+              GPUImage 视频合成特效 App，实现类似 AR 滤镜效果，导出至国外短视频平台。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">新梦城市 · 地方媒体</span>
+            <span class="proj-desc">
+              地方媒体运营客户端，帮朋友公司搭建第一版。涵盖新闻资讯、活动发布、互动模块。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">播拍 · 图片制作视频</span>
+            <span class="proj-desc">
+              照片序列快速生成视频内容，支持多种转场动画与背景音乐自定义。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">录音笔记</span>
+            <span class="proj-desc">
+              手写 + 录音同步记录工具，笔迹与音频时间轴联动回放。
+            </span>
+            <div class="proj-tech"><span>Objective-C</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="backend">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>后端 &amp; 系统架构</h3>
+        </div>
+        <p class="card-desc">
+          6 年后端开发经验，Go / Node.js / Python 为主。涵盖微服务、数据管道、Serverless、
+          实时数据处理、高频交易系统。Next.js + TRPC Serverless 与 NestJS 长进程混合架构。
+        </p>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-name">Meme 项目后端系统</span>
+            <span class="proj-desc">
+              Next.js + TRPC + Prisma + PgSQL 多链（EVM/TON/Solana）预购/质押/提现系统。
+              链上交易信息定时拉取解析，BRC20 转账异步处理（Background Worker on Render）。
+              同步维护 Bitbot 全栈：Bot（Node.js/render）+ Miniapp（Next.js/vercel）+ 运营后台 + NestJS 安全跳板（AWS）。
+            </span>
+            <div class="proj-tech"><span>Next.js</span><span>TRPC</span><span>Prisma</span><span>PostgreSQL</span><span>NestJS</span><span>Redis</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">K 线 &amp; 指标数据管道</span>
+            <span class="proj-desc">
+              开/高/收/低 Redis 缓存计算 + 数据库持久化。指标数据 Redis 时间桶聚合统计，
+              支撑交易所级实时行情查询。
+            </span>
+            <div class="proj-tech"><span>Go</span><span>Redis</span><span>SelectDB</span><span>PostgreSQL</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">MPC 钱包 &amp; Jupiter 交易</span>
+            <span class="proj-desc">
+              MPC 钱包配合 Jupiter 原生交易聚合，开发中过渡方案。
+            </span>
+            <div class="proj-tech"><span>Go</span><span>Solana</span><span>Jupiter</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="robot">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 12h12M6 12l-3-3M6 12l-3 3M18 12l3-3M18 12l3 3M12 6v12M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3"/><circle cx="12" cy="12" r="8"/></svg>
+          </div>
+          <h3>工业机器人 &amp; 自动化</h3>
+        </div>
+        <p class="card-desc">
+          作为总工带领软硬件及部署团队实现自动化喷涂机器人全栈研发，国内外累计出货 30+ 台。
+          从 3D 扫描路径规划到多品牌机器人轨迹生成、PLC/OPC/TCP 通讯全链路。
+        </p>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-name">智能喷涂系统</span>
+            <span class="proj-desc">
+              自研线扫/散斑相机 3D 点云扫描 → PCL/OpenCV/OpenNI 特征提取 → 边框/大面轨迹规划 →
+              喷涂工艺设计 → 多品牌离线编程。AI（EasyDL）2D 识别预设轨迹切换，混线全自动适配。
+            </span>
+            <div class="proj-tech"><span>C++</span><span>OpenCV</span><span>PCL</span><span>OpenNI</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">机器人通讯 &amp; 模块化中台</span>
+            <span class="proj-desc">
+              C# WPF 桌面工控上位机。PLC（安川 MP / 倍福 TwinCAT）+ OPC + TCP + IO 点位通讯。
+              机器人模块（ABB/安川/Keba/纳博特/Codesys 自研）、扫描仪模块、AI 模块分拆 DLL 中台架构。
+              Codesys ST 语言控制伺服电机，生成安川/Keba/纳博特及自研机器人轨迹。
+            </span>
+            <div class="proj-tech"><span>C#</span><span>WPF</span><span>Codesys ST</span><span>PLC</span><span>OPC</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">3D 扫描仪固件开发</span>
+            <span class="proj-desc">
+              树莓派上 C++ + libevent 起服务，crontab 定时 IO 检测复位，调用奥比中光/Intel 相机 SDK。
+            </span>
+            <div class="proj-tech"><span>C++</span><span>libevent</span><span>Raspberry Pi</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name">基础设施 &amp; 研发效能</span>
+            <span class="proj-desc">
+              搭建 Git Gogs 代码托管 + Jitamin 研发任务管理；阿里云线上部署，Docker 容器化 + NuGet 私有包管理。
+            </span>
+            <div class="proj-tech"><span>Docker</span><span>Gogs</span><span>阿里云</span><span>NuGet</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label">工作经历</p>
+  <h2>职业时间线</h2>
+  <div class="timeline">
+
+     <div class="timeline-item reveal">
+       <p class="period">2024.10 — 2026.05</p>
+       <p class="role">区块链开发工程师 · 链上数据服务</p>
+       <p class="company"><a href="https://www.bydfi.com/en/moonx/pump" target="_blank" style="color:inherit;text-decoration:none;">BYDFi</a> <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;">· 远程全职</span></p>
+      <ul class="highlights">
+        <li>OpenCode + MCP（ES/Kafka/Redis/MongoDB/SelectDB/PgSQL）编写 Skill &amp; AGENT.md 定义边界及流程，支持飞书自然语言交互查询链上数据</li>
+        <li>Polymarket 预测市场扫块数据 + 限频官方 API 数据入库，跑 DEX 相关逻辑</li>
+        <li>Codex / Claude Code + superpowers 编写 Skills 定义流程和边界，自动化生成 DEX 数据解析代码模块</li>
+        <li>Solana / BSC / Base 内外盘 DEX 数据入库：pump（pumpfun/pumswap）、raydium（clmm/cpmm/launchpad）、meteora（dbc/dlmm/damm/damm v2）、orca（wp/swapv2）、boop、moonit、sugar、heaven、trends、pancake（v2/v3/v4/solana）、uniswap（v2/v3/v4）、flap、fourmeme、aerodrome（cl/slip/base）、zora、dopper、clanker、flaunch 等 20+ 协议</li>
+        <li>EVM 扫块 + Solana Yellowstone gRPC 双通道监听，数据入 Kafka 由各业务服务消费清洗</li>
+        <li>K 线方案：早期 DB 直查 → Redis 开高收低缓存 + DB 持久化；指标数据 Redis 时间桶统计</li>
+        <li>MPC 钱包 + Jupiter 原生交易过渡</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2024.05 — 2024.09</p>
+      <p class="role">区块链后端交易研发</p>
+      <p class="company">德州昭望科技有限公司 <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;">· 远程全职</span></p>
+      <ul class="highlights">
+        <li>Meme 项目多链（EVM/TON/Solana）预购/质押/提现系统，Next.js + TRPC + Vercel + PgSQL</li>
+        <li>链上交易包装特殊信息上链，解析包装数据，到期分发 EVM/TON/Solana/BRC20 Token</li>
+        <li>Bitbot Base 链 Meme 交易平台：Telegram Bot（Node.js/Render）+ Miniapp（Next.js/Vercel）+ 运营管理平台 + NestJS 安全跳板（AWS）</li>
+        <li>Dexscreener/Geckoterminal 新币数据 Redis 缓存，对接托管钱包整合交易</li>
+        <li>用户量短期 3w~1000 并发，稳定运行支持提现/质押</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2021.10 — 2024.10</p>
+      <p class="role">区块链应用及移动应用负责人</p>
+      <p class="company">SmartMesh · MetaLife <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;">· 北京 / 远程混合</span></p>
+      <ul class="highlights">
+        <li>MetaLife 去中心化社交：SSB 协议 BLE 蓝牙通信实现无服务器社交通讯</li>
+        <li>React Native 区块链钱包基础架构 + Spectrum 二层网络（Photon）集成</li>
+        <li>NFT 市场整体架构（一口价 + 拍卖）、DAO 合约及应用（众筹/提案/投票/执行，支持 ERC20/ERC721）</li>
+        <li>Swap 合约：MLT 与 SMT 兑换比例设置及互相兑换</li>
+        <li>Filecoin Titan Go SDK 扩展支持移动端</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2019.05 — 2021.06</p>
+      <p class="role">总工程师</p>
+      <p class="company">北京曲线智能装备有限公司</p>
+      <ul class="highlights">
+        <li>自动化喷涂机器人全栈研发，国内国外累计出货 30+ 台</li>
+        <li>WPF 桌面工控上位机 + C++ OpenCV/PCL/OpenNI 点云路径规划</li>
+        <li>安川 MP + IO 点位产线控制 → Codesys ST 伺服电机，生成安川/Keba/纳博特及自研机器人轨迹</li>
+        <li>树莓派 libevent 服务 + 奥比/Intel 相机 SDK 3D 扫描</li>
+        <li>搭建 Git Gogs + Jitamin + 阿里云 Docker NuGet 私有部署</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2018.03 — 2019.02</p>
+      <p class="role">Mobile Leader</p>
+      <p class="company">SmartMesh · MeshBox</p>
+      <ul class="highlights">
+        <li>MeshBox 路由器矿机控制端 App，对接公链 Spectrum 和二层网络 Photon</li>
+        <li>移动端对接 openwrt luci；Ionic + Cordova 插件封装支持 Android web3j 和 iOS ethers.framework</li>
+        <li>跨国团队协同完成户外版 MeshBox</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2016.10 — 2018.02</p>
+      <p class="role">iOS Leader</p>
+      <p class="company">言之有物 · LOOK / LOOKMEN</p>
+      <ul class="highlights">
+        <li>LOOK 客户端 1.9.0+ 版本：自动化打包、网络层重构、自动化构建实体和网络层、JSPatch 混淆热更新、组件化设计</li>
+        <li>切面本地化/统计、Crash 防御、Ollvm 混淆、Router 设计、客服（七鱼/环信）、iMessage、3D Touch 商品预览</li>
+        <li>LOOKMEN 客户端开发</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2015.05 — 2016.07</p>
+      <p class="role">iOS Leader</p>
+      <p class="company">人人贷 · 黑卡</p>
+      <ul class="highlights">
+        <li>带领 6 人研发团队完成黑卡客户端研发</li>
+        <li>项目架构、网络层封装、公共组件开发、主页/账单/安全设置等核心模块</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2014.08 — 2015.04</p>
+      <p class="role">iOS 资深工程师 · 主管</p>
+      <p class="company">搜狐畅游 · 2035 游戏学院</p>
+      <ul class="highlights">
+        <li>带一名工程师完成 2035 创新社区 &amp; 游戏学院客户端研发</li>
+        <li>负责登录、注册、主页、广场、开发者排名等主功能開發</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2012.06 — 2014.07</p>
+      <p class="role">iOS 技术总监</p>
+      <p class="company">北京西瓜藤网络科技</p>
+      <ul class="highlights">
+        <li>咪呀分享：社区导购平台，前期独立开发后期带学员优化，GPUImage 实时渲染相机</li>
+        <li>24 格：GPUImage GPU 加速图片合成视频 + 录音混音 + VideoKit 流媒体播放 + 断点上传，独立完成技术攻破及架构</li>
+        <li>美集：影楼线上管理 &amp; 云相册平台，1.0.0~2.1.1 全版本独立开发，iOS7 适配</li>
+        <li>约拍：O2O 摄影师平台，客户端独立研发 + 后台接口制定 + 交易系统设计</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <p class="section-label">专业技能</p>
+  <h2>技术栈</h2>
+  <div class="skill-grid">
+    <div class="skill-group">
+      <h4>区块链</h4>
+      <div class="tags">
+        <span>Solidity</span><span>EVM</span><span>Solana</span><span>TON</span><span>BRC20</span>
+        <span>Go</span><span>Web3.js</span><span>Ethers</span><span>gRPC</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>后端</h4>
+      <div class="tags">
+        <span>Go</span><span>Python</span><span>Node.js</span><span>Next.js</span><span>NestJS</span>
+        <span>TRPC</span><span>Kafka</span><span>Redis</span><span>MCP</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>数据库</h4>
+      <div class="tags">
+        <span>PostgreSQL</span><span>MongoDB</span><span>SelectDB</span><span>Elasticsearch</span>
+        <span>MySQL</span><span>Prisma</span><span>GORM</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>移动端</h4>
+      <div class="tags">
+        <span>iOS / ObjC</span><span>React Native</span><span>Flutter</span><span>Ionic</span>
+        <span>GPUImage</span><span>JSPatch</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>工控 &amp; 机器人</h4>
+      <div class="tags">
+        <span>C++</span><span>OpenCV</span><span>PCL</span><span>WPF / C#</span>
+        <span>Codesys ST</span><span>PLC</span><span>OPC</span><span>OpenNI</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>AI Agent &amp; 工具</h4>
+      <div class="tags">
+        <span>MCP</span><span>OpenCode</span><span>Claude Code</span><span>Codex</span>
+        <span>Cursor</span><span>AI SDK</span><span>Flask</span><span>EasyDL</span>
+        <span>Docker</span><span>Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <p class="section-label">教育 &amp; 认证</p>
+  <h2>教育背景</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p>东北林业大学</p>
+      <p class="sub">软件工程 · 本科 · 2021—2023</p>
+    </div>
+    <div class="edu-card">
+      <p>山东海天软件工程学院</p>
+      <p class="sub">计算机应用与技术 · 大三肄业 · 2009—2012</p>
+    </div>
+    <div class="edu-card">
+      <p>认证 &amp; 获奖</p>
+      <p class="sub">
+        MCP 微软认证专家 (2011)<br/>
+        MCTS 微软认证技术工程师 (2012)<br/>
+        齐鲁软件大赛 iPhone 组二等奖 (2011)
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">联系</p>
+  <h2>取得联系</h2>
+  <p style="color:var(--muted);max-width:56ch;font-size:15px;">
+     当前在济南，期望研发相关岗位。欢迎通过以下方式联系。
+  </p>
+  <div class="contact-links">
+    <a href="mailto:heroims@163.com">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      heroims@163.com
+    </a>
+    <a href="https://github.com/heroims" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      github.com/heroims
+    </a>
+    <a href="https://heroims.github.io" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      heroims.github.io
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>赵易奇 · heroims@163.com · 2026</p>
+</footer>
+
+<script>
+(function() {
+  // ---- reveal on scroll ----
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el) { io.observe(el); });
+  })();
+
+  // ---- dark mode toggle ----
+  (function() {
+    var html = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var STORE = 'resume:theme';
+    function setTheme(dark) {
+      if (dark) { html.setAttribute('data-theme', 'dark'); btn.textContent = '☀️'; }
+      else { html.removeAttribute('data-theme'); btn.textContent = '🌙'; }
+      try { localStorage.setItem(STORE, dark ? 'dark' : 'light'); } catch (_) {}
+    }
+    try {
+      var saved = localStorage.getItem(STORE);
+      if (saved === 'dark') setTheme(true);
+      else if (saved === 'light') setTheme(false);
+    } catch (_) {}
+    btn.addEventListener('click', function() {
+      setTheme(html.getAttribute('data-theme') !== 'dark');
+    });
+  })();
+
+  // ---- tab switching ----
+  (function() {
+    var pills = document.querySelectorAll('.tab-pill');
+    var panels = document.querySelectorAll('.tab-panel');
+    pills.forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var tab = pill.getAttribute('data-tab');
+        pills.forEach(function(p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        panels.forEach(function(p) {
+          if (p.getAttribute('data-tab') === tab) {
+            p.classList.add('active');
+            // reveal cards in the active panel immediately
+            var reveals = p.querySelectorAll('.reveal:not(.visible)');
+            reveals.forEach(function(r) { r.classList.add('visible'); });
+          } else {
+            p.classList.remove('active');
+          }
+        });
+      });
+    });
+    // reveal cards in the initially active panel
+    var activePanel = document.querySelector('.tab-panel.active');
+    if (activePanel) {
+      var reveals = activePanel.querySelectorAll('.reveal:not(.visible)');
+      reveals.forEach(function(r) { r.classList.add('visible'); });
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>
