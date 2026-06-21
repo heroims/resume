@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>赵易奇 · 研发全栈工程师</title>
+<style>
+/* ===========================================================
+   Modern Minimal — Linear/Vercel inspired resume site
+   Tokens from the Modern Minimal direction library
+   =========================================================== */
+:root {
+  --bg:      oklch(99% 0.002 240);
+  --surface: oklch(100% 0 0);
+  --fg:      oklch(18% 0.012 250);
+  --muted:   oklch(54% 0.012 250);
+  --border:  oklch(92% 0.005 250);
+  --accent:  oklch(58% 0.18 255);
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+  --nav-h: 60px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+a:hover { opacity: .72; }
+img { max-width: 100%; display: block; }
+
+/* ---- nav -------------------------------------------------- */
+nav {
+  position: fixed; inset: 0 0 auto 0; height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 64px);
+  background: rgba(255,255,255,.82); backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  font-size: 14px; letter-spacing: -.01em;
+}
+nav .logo { font-weight: 600; font-size: 15px; color: var(--fg); }
+nav .logo span { color: var(--muted); }
+nav .links { display: flex; gap: 24px; list-style: none; }
+nav .links a { color: var(--muted); font-weight: 450; }
+nav .links a:hover { color: var(--fg); }
+
+/* ---- sections --------------------------------------------- */
+section { padding: 80px clamp(20px, 5vw, 64px); max-width: 1120px; margin: 0 auto; }
+.section-label {
+  font: 600 12px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+h2 {
+  font: 600 clamp(28px, 4vw, 40px)/1.15 var(--font-display);
+  letter-spacing: -.02em; margin-bottom: 32px;
+}
+h3 {
+  font: 600 20px/1.3 var(--font-display);
+  letter-spacing: -.01em; margin-bottom: 8px;
+}
+
+/* ---- hero ------------------------------------------------- */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; padding-top: var(--nav-h);
+  max-width: 800px;
+}
+.hero .eyebrow {
+  font: 450 13px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px;
+}
+.hero h1 {
+  font: 700 clamp(40px, 6vw, 64px)/1.05 var(--font-display);
+  letter-spacing: -.025em; margin-bottom: 20px;
+}
+.hero .tagline {
+  font-size: clamp(17px, 2vw, 20px); color: var(--muted);
+  max-width: 62ch; margin-bottom: 40px; line-height: 1.6;
+}
+.hero .tagline strong { color: var(--fg); font-weight: 510; }
+.hero .actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero .actions a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 8px;
+  font-size: 14px; font-weight: 510; letter-spacing: -.01em;
+  border: 1px solid var(--border); color: var(--fg);
+  transition: background .2s, border-color .2s;
+}
+.hero .actions a:hover { background: var(--border); border-color: var(--muted); opacity: 1; }
+.hero .actions a.primary { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+.hero .actions a.primary:hover { opacity: .88; }
+.hero .actions a .icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ---- stats bar -------------------------------------------- */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px; margin-top: 48px; padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.stats-bar dt { font: 600 28px/1 var(--font-display); letter-spacing: -.02em; color: var(--fg); }
+.stats-bar dd { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* ---- direction cards (categories) ------------------------- */
+.directions { display: grid; gap: 24px; }
+.direction-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 32px; cursor: pointer;
+  transition: box-shadow .25s, border-color .25s;
+}
+.direction-card:hover { border-color: var(--muted); box-shadow: 0 8px 30px rgba(0,0,0,.04); }
+.direction-card .card-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
+}
+.direction-card .card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: grid; place-items: center; flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.direction-card .card-icon svg { width: 20px; height: 20px; stroke: var(--fg); fill: none; stroke-width: 1.8; }
+.direction-card h3 { margin-bottom: 0; }
+.direction-card .card-desc { color: var(--muted); font-size: 14px; margin-bottom: 20px; max-width: 70ch; }
+.direction-card .proj-list { display: grid; gap: 12px; }
+.direction-card .proj-item {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 12px 16px; border-radius: 8px;
+  background: var(--bg); border: 1px solid var(--border);
+  font-size: 14px;
+}
+.direction-card .proj-item .proj-name { font-weight: 510; color: var(--fg); }
+.direction-card .proj-item .proj-desc { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.direction-card .proj-item .proj-tech {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;
+}
+.direction-card .proj-item .proj-tech span {
+  font: 400 11px/1 var(--font-mono); letter-spacing: .01em;
+  padding: 3px 8px; border-radius: 4px;
+  background: var(--border); color: var(--muted);
+}
+.direction-card .proj-item .proj-links { margin-top: 4px; }
+.direction-card .proj-item .proj-links a {
+  font-size: 12px; font-weight: 510; margin-right: 12px;
+}
+
+/* ---- timeline --------------------------------------------- */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+  width: 1px; background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 36px; }
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -24px; top: 7px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--accent);
+}
+.timeline-item .period {
+  font: 450 13px/1 var(--font-body); color: var(--accent);
+  letter-spacing: -.01em; margin-bottom: 4px;
+}
+.timeline-item .role { font-weight: 600; font-size: 16px; }
+.timeline-item .company { color: var(--muted); font-size: 14px; }
+.timeline-item .highlights { margin-top: 8px; font-size: 14px; color: var(--muted); line-height: 1.6; }
+.timeline-item .highlights li { margin-left: 1.2em; margin-bottom: 2px; }
+
+/* ---- skills ----------------------------------------------- */
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+.skill-group {}
+.skill-group h4 { font: 600 13px/1 var(--font-body); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.skill-group .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-group .tags span {
+  font: 400 12px/1 var(--font-mono); letter-spacing: .01em;
+  padding: 5px 10px; border-radius: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--fg);
+}
+
+/* ---- education / contact ----------------------------------- */
+.contact-links { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 24px; }
+.contact-links a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fg); }
+.contact-links a svg { width: 18px; height: 18px; stroke: var(--muted); fill: none; stroke-width: 1.8; }
+
+footer {
+  text-align: center; padding: 40px clamp(20px, 5vw, 64px);
+  font-size: 12px; color: var(--muted); border-top: 1px solid var(--border);
+}
+
+/* ---- reveal animation (intersection observer) -------------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- responsive ------------------------------------------- */
+@media (max-width: 700px) {
+  nav .links { gap: 14px; font-size: 13px; }
+  section { padding: 56px clamp(16px, 4vw, 24px); }
+  .hero { min-height: auto; padding-top: calc(var(--nav-h) + 32px); }
+  .direction-card { padding: 24px; }
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="logo">赵易奇 <span>· 研发</span></div>
+  <ul class="links">
+    <li><a href="#directions">方向</a></li>
+    <li><a href="#experience">经历</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <p class="eyebrow">14 年研发 · 全栈 · 多领域</p>
+  <h1>赵易奇</h1>
+  <p class="tagline">
+    区块链底层 &amp; DEX 数据基建工程师 · 前喷涂机器人总工 ·
+    7 年移动端架构经验。<br/>
+    擅长 <strong>Go / Python / Solidity / Node.js / iOS / C++</strong>，
+    横跨 <strong>区块链</strong>、<strong>工业自动化</strong>、
+    <strong>移动端</strong>、<strong>后端架构</strong> 四大领域。
+  </p>
+  <div class="actions">
+    <a href="https://github.com/heroims" target="_blank" class="primary">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="https://heroims.github.io" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Blog
+    </a>
+    <a href="https://www.linkedin.com/in/%E6%98%93%E5%A5%87-%E8%B5%B5-8aa943aa/" target="_blank">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+  <dl class="stats-bar">
+    <div><dt>14</dt><dd>年研发经验</dd></div>
+    <div><dt>30+</dt><dd>喷涂机器人出货</dd></div>
+    <div><dt>10+</dt><dd>区块链项目</dd></div>
+    <div><dt>15+</dt><dd>移动端产品</dd></div>
+  </dl>
+</section>
+
+<!-- Directions -->
+<section id="directions">
+  <p class="section-label">方向分类</p>
+  <h2>专业方向</h2>
+  <div class="directions">
+
+    <!-- 1. 区块链 -->
+    <div class="direction-card reveal">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>区块链 &amp; Web3 基建</h3>
+      </div>
+      <p class="card-desc">
+        DEX 数据聚合、链上数据分析、EVM/Solana/TON 多链支持、智能合约、二层网络。
+        主导多个 DeFi 数据服务从扫块到落库的全链路工程。
+      </p>
+      <div class="proj-list">
+        <div class="proj-item">
+          <span class="proj-name">BYDFi · 链上数据服务</span>
+          <span class="proj-desc">
+            Solana/BSC/Base 内外盘 DEX 数据入库，包括 pump、raydium、meteora、orca 等 20+ 协议。
+            EVM 扫块 + Yellowstone gRPC 双通道，Kafka 清洗，Redis 实时热点，SelectDB 智能钱分析。
+          </span>
+          <div class="proj-tech">
+            <span>Go</span><span>Franz-Kafka</span><span>Redis</span><span>MongoDB</span>
+            <span>SelectDB</span><span>PostgreSQL</span><span>Elasticsearch</span>
+          </div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">Bitbot · Telegram Meme 交易平台</span>
+          <span class="proj-desc">
+            Base 链 Meme 币托管代购系统。Dexscreener/Geckoterminal 数据缓存，托管钱包集成，
+            Telegram Bot + Miniapp + 运营后台全栈。
+          </span>
+          <div class="proj-tech">
+            <span>Node.js</span><span>Next.js</span><span>PostgreSQL</span><span>Redis</span><span>NestJS</span>
+          </div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">Meme Coin 多链预购/质押系统</span>
+          <span class="proj-desc">
+            EVM / TON / Solana 多链预购、质押、空投分发。BRC20 转账解析，Unisat API 限频优化，
+            Background Worker 异步处理。
+          </span>
+          <div class="proj-tech"><span>Solidity</span><span>Next.js</span><span>Prisma</span><span>PostgreSQL</span><span>Vercel</span></div>
+          <div class="proj-links"><a href="https://poodlana.com/zh" target="_blank">Poodlana ↗</a><a href="https://bitcoindogs.club/zh" target="_blank">Bitcoin Dogs ↗</a></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">MetaLife · 去中心化社交网络</span>
+          <span class="proj-desc">
+            基于 SSB 协议的无服务器社交 + Spectrum 二层网络支付 + 多链钱包。
+            NFT 市场（一口价/拍卖）、DAO（众筹/提案/投票）、Swap 模块。
+          </span>
+          <div class="proj-tech"><span>React Native</span><span>Go</span><span>Solidity</span><span>BLE</span><span>MDNS</span></div>
+          <div class="proj-links"><a href="https://github.com/MetaLife-Protocol" target="_blank">GitHub ↗</a></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">NostrV · Nostr Flutter 客户端</span>
+          <span class="proj-desc">
+            支持中继推荐、闪电支付、HD Node 账户，覆盖 NIP 1/2/4/6/8/10/18/21/24/32/36/46/47/50/51/56/57/65。
+          </span>
+          <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>Nostr</span></div>
+          <div class="proj-links"><a href="https://github.com/heroims/NostrV" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 移动端 -->
+    <div class="direction-card reveal">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>移动端开发</h3>
+      </div>
+      <p class="card-desc">
+        7 年 iOS 原生 + React Native + Flutter 多端架构。主导过千万级用户跨境电商、
+        消费金融、短视频、社交、O2O 等产品。
+      </p>
+      <div class="proj-list">
+        <div class="proj-item">
+          <span class="proj-name">LOOK / LOOKMEN · 跨境电商</span>
+          <span class="proj-desc">
+            负责 1.9.0+ 版本迭代：网络层重构、组件化设计、JSPatch 热更新混淆、
+            Ollvm 代码混淆、Crash 防御体系、路由设计、iMessage / 3D Touch 商品预览。
+          </span>
+          <div class="proj-tech"><span>Objective-C</span><span>JSPatch</span><span>Ollvm</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">黑卡 · 消费金融</span>
+          <span class="proj-desc">
+            人人友信集团旗下信用消费平台，带领 6 人团队完成全套 iOS 客户端。
+            架构设计、网络层封装、主页/账单/安全设置等核心模块。
+          </span>
+          <div class="proj-tech"><span>Objective-C</span><span>RN</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">24格 · 短视频/图片合成</span>
+          <span class="proj-desc">
+            GPUImage GPU 加速图片合成视频、音频混合+音轨叠加、VideoKit 流媒体播放、
+            断点续传。独立完成技术攻关及项目架构。
+          </span>
+            <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span><span>VideoKit</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">Ollvm 代码混淆编译器</span>
+          <span class="proj-desc">
+            基于 LLVM 5.0 ~ 14.x 制作移动端 Ollvm 混淆工具链，用于保护客户端核心逻辑。
+          </span>
+          <div class="proj-tech"><span>C++</span><span>LLVM</span><span>Ollvm</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">SmartMesh · 区块链社交 + 无网支付</span>
+          <span class="proj-desc">
+            区块链钱包 + 去中心化无网聊天（MultipeerConnectivity + MDNS）+ 光子网络支付。
+            移动端对接 MeshBox 矿机 openwrt luci。
+          </span>
+          <div class="proj-tech"><span>ObjC</span><span>RN</span><span>Ionic</span><span>Cordova</span><span>BLE</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 后端架构 -->
+    <div class="direction-card reveal">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <h3>后端 &amp; 系统架构</h3>
+      </div>
+      <p class="card-desc">
+        6 年后端经验，以 Go / Node.js 为主。涵盖微服务、数据管道、Serverless、
+        实时数据处理、高并发交易系统。
+      </p>
+      <div class="proj-list">
+        <div class="proj-item">
+          <span class="proj-name">链上数据查询 Lark Agent</span>
+          <span class="proj-desc">
+            ES + Kafka + Redis + MongoDB + SelectDB + PgSQL 飞书自然语言交互查询系统，
+            支持 OpenCode / Codex + superpowers skill 编排自动化数据解析。
+          </span>
+          <div class="proj-tech"><span>Go</span><span>OpenCode</span><span>ES</span><span>Kafka</span><span>MCP</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">德州昭望 · Meme 交易后端</span>
+          <span class="proj-desc">
+            Next.js + TRPC Serverless + Prisma ORM + PgSQL 多链交易系统，支持 EVM/TON/Solana
+            购买包装上链、BRC20 解析分发、Background Worker 异步转账。
+          </span>
+          <div class="proj-tech"><span>Next.js</span><span>TRPC</span><span>Prisma</span><span>Redis</span><span>NestJS</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">K 线 &amp; 指标数据管道</span>
+          <span class="proj-desc">
+            开/高/收/低 Redis 缓存计算 + 持久化存储。指标数据 Redis 时间桶聚合统计，
+            支撑交易所级实时行情。
+          </span>
+          <div class="proj-tech"><span>Go</span><span>Redis</span><span>SelectDB</span><span>PostgreSQL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 工业机器人 -->
+    <div class="direction-card reveal">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 12h12M6 12l-3-3M6 12l-3 3M18 12l3-3M18 12l3 3M12 6v12M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3"/><circle cx="12" cy="12" r="8"/></svg>
+        </div>
+        <h3>工业机器人 &amp; 自动化</h3>
+      </div>
+      <p class="card-desc">
+        作为总工带领团队实现自动化喷涂机器人全栈研发，国内外累计出货 30+ 台。
+        从 3D 扫描路径规划到多品牌机器人轨迹生成、PLC/OPC 通讯全链路。
+      </p>
+      <div class="proj-list">
+        <div class="proj-item">
+          <span class="proj-name">智能喷涂系统</span>
+          <span class="proj-desc">
+            自研线扫相机 + OpenCV/PCL/OpenNI 3D 点云特征提取 → 边框/大面轨迹规划 →
+            喷涂工艺转换 → 多品牌机器人离线编程。AI 2D 识别预设轨迹切换。
+          </span>
+          <div class="proj-tech"><span>C++</span><span>OpenCV</span><span>PCL</span><span>OpenNI</span><span>WPF</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">机器人通讯 &amp; 中台架构</span>
+          <span class="proj-desc">
+            PLC (安川 MP / 倍福 TwinCAT) + OPC + TCP + IO 点位通讯。
+            机器人模块（ABB/安川/Keba/纳博特/Codesys 自研）、扫描仪模块、AI 模块中台架构。
+          </span>
+          <div class="proj-tech"><span>C#</span><span>WPF</span><span>Codesys ST</span><span>PLC</span><span>OPC</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">3D 扫描仪固件</span>
+          <span class="proj-desc">
+            树莓派上 C++ + libevent 起服务，crontab 定时 IO 检测复位，调用奥比/Intel 相机 SDK。
+          </span>
+          <div class="proj-tech"><span>C++</span><span>libevent</span><span>Raspberry Pi</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. AI & CV -->
+    <div class="direction-card reveal">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>AI &amp; 计算机视觉</h3>
+      </div>
+      <p class="card-desc">
+        计算机视觉、实时渲染、人脸识别、大模型辅助开发等交叉领域。
+        将 CV 能力应用于工业检测和移动端实时渲染。
+      </p>
+      <div class="proj-list">
+        <div class="proj-item">
+          <span class="proj-name">喷涂 AI 视觉识别</span>
+          <span class="proj-desc">
+            基于 EasyDL 的 2D 图像识别，自动识别工件类型并切换预设喷涂轨迹，
+            实现不同工件混线生产的全自动适配。
+          </span>
+          <div class="proj-tech"><span>EasyDL</span><span>OpenCV</span></div>
+        </div>
+        <div class="proj-item">
+          <span class="proj-name">实时人脸识别渲染</span>
+          <span class="proj-desc">
+            iOS 端实时摄像头人脸识别 + GPU 实时渲染，照片合成视频、实时滤镜特效。
+          </span>
+          <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span><span>OpenCV</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <p class="section-label">工作经历</p>
+  <h2>职业时间线</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <p class="period">2024.10 — 至今</p>
+      <p class="role">区块链开发工程师</p>
+      <p class="company">BYDFi</p>
+      <ul class="highlights">
+        <li>链上 DEX 数据聚合服务，覆盖 Solana/BSC/Base 20+ 协议</li>
+        <li>OpenCode/Codex + MCP 技能编排自动化数据解析 &amp; 飞书 Agent</li>
+        <li>EVM 扫块 + Yellowstone gRPC 双通道数据管道，Kafka 清洗落库</li>
+        <li>K 线方案设计 + 指标数据 Redis 时间桶聚合</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2024.05 — 2024.09</p>
+      <p class="role">区块链后端交易研发</p>
+      <p class="company">德州昭望科技有限公司</p>
+      <ul class="highlights">
+        <li>Meme 项目多链（EVM/TON/Solana）预购/质押/提现系统</li>
+        <li>Bitbot Base 链 Meme 交易平台：Bot + Miniapp + 运营后台全栈</li>
+        <li>Next.js + TRPC Serverless + NestJS 长进程混合架构</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2021.10 — 2024.10</p>
+      <p class="role">区块链应用及移动应用负责人</p>
+      <p class="company">SmartMesh</p>
+      <ul class="highlights">
+        <li>MetaLife 去中心化社交：SSP 无服务器通讯 + Spectrum 二层网络</li>
+        <li>React Native 多链钱包 + NFT 市场 + DAO + Swap 全套合约及应用</li>
+        <li>Filecoin Titan Go SDK 移动端扩展</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2019.05 — 2021.06</p>
+      <p class="role">总工程师</p>
+      <p class="company">北京曲线智能装备有限公司</p>
+      <ul class="highlights">
+        <li>自动化喷涂机器人全栈研发，国内外出货 30+ 台</li>
+        <li>3D 点云路径规划 + 多品牌机器人离线编程</li>
+        <li>PLC/OPC/TCP 通讯 + Codesys 机器人平台化</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="period">2012.06 — 2018.12</p>
+      <p class="role">iOS 技术总监 / Leader</p>
+      <p class="company">搜狐畅游 · 人人贷 · LOOK · 西瓜藤科技</p>
+      <ul class="highlights">
+        <li>主导 15+ 移动端产品：跨境电商、消费金融、短视频、O2O、社交</li>
+        <li>GPUImage 图片合成视频、Ollvm 混淆、组件化架构等核心基础能力自研</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <p class="section-label">专业技能</p>
+  <h2>技术栈</h2>
+  <div class="skill-grid">
+    <div class="skill-group">
+      <h4>区块链</h4>
+      <div class="tags">
+        <span>Solidity</span><span>EVM</span><span>Solana</span><span>TON</span><span>BRC20</span>
+        <span>Go</span><span>Web3.js</span><span>Ethers</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>后端</h4>
+      <div class="tags">
+        <span>Go</span><span>Python</span><span>Node.js</span><span>Next.js</span><span>NestJS</span>
+        <span>TRPC</span><span>Kafka</span><span>Redis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>数据库</h4>
+      <div class="tags">
+        <span>PostgreSQL</span><span>MongoDB</span><span>SelectDB</span><span>Elasticsearch</span>
+        <span>MySQL</span><span>Prisma</span><span>GORM</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>移动端</h4>
+      <div class="tags">
+        <span>iOS / ObjC</span><span>React Native</span><span>Flutter</span><span>Ionic</span>
+        <span>GPUImage</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>工控 &amp; 机器人</h4>
+      <div class="tags">
+        <span>C++</span><span>OpenCV</span><span>PCL</span><span>WPF / C#</span>
+        <span>Codesys ST</span><span>PLC</span><span>OPC</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>AI &amp; 工具</h4>
+      <div class="tags">
+        <span>LLVM / Ollvm</span><span>EasyDL</span><span>OpenCode</span><span>MCP</span>
+        <span>Docker</span><span>Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <p class="section-label">教育 &amp; 认证</p>
+  <h2>教育背景</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;">
+      <p style="font-weight:600;font-size:15px;">东北林业大学</p>
+      <p style="color:var(--muted);font-size:13px;margin-top:4px;">软件工程 · 本科 · 2021—2023</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;">
+      <p style="font-weight:600;font-size:15px;">山东海天软件工程学院</p>
+      <p style="color:var(--muted);font-size:13px;margin-top:4px;">计算机应用与技术 · 2009—2012</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;">
+      <p style="font-weight:600;font-size:15px;">认证</p>
+      <p style="color:var(--muted);font-size:13px;margin-top:4px;">MCP 微软认证专家 (2011)<br/>MCTS 微软认证技术工程师 (2012)</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <p class="section-label">联系</p>
+  <h2>取得联系</h2>
+  <p style="color:var(--muted);max-width:56ch;font-size:15px;">
+    当前在北京，期望研发相关岗位。欢迎通过以下方式联系。
+  </p>
+  <div class="contact-links">
+    <a href="tel:15652260818">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      156-5226-0818
+    </a>
+    <a href="mailto:heroims@163.com">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      heroims@163.com
+    </a>
+    <a href="https://github.com/heroims" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      github.com/heroims
+    </a>
+    <a href="https://heroims.github.io" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      heroims.github.io
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>赵易奇 · heroims@163.com · 2025</p>
+</footer>
+
+<!-- Intersection Observer for reveal animations -->
+<script>
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
