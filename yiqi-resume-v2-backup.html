@@ -197,6 +197,12 @@ footer {
 }
 .lang-toggle:hover { background: var(--border); color: var(--fg); }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
 @media (max-width: 700px) {
   nav .links { gap: 14px; font-size: 13px; }
   section { padding: 56px clamp(16px, 4vw, 24px); }
@@ -217,7 +223,9 @@ footer {
     <li><a href="#skills" data-i18n="navSkills">技能</a></li>
     <li><a href="#contact" data-i18n="navContact">联系</a></li>
   </ul>
-  <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch language"><span data-i18n="langSwitch">EN</span></button>
+  <div class="nav-actions">
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch language"><span data-i18n="langSwitch">EN</span></button>
+  </div>
 </nav>
 
 <section class="hero" id="hero">

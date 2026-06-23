@@ -214,9 +214,14 @@ footer {
   transition: background .2s, color .2s;
   font: 600 12px/1 var(--font-body);
   letter-spacing: .03em;
-  margin-left: 4px;
 }
 .lang-toggle:hover { background: var(--border); color: var(--fg); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
 
 /* Tab navigation — direction pills */
 .tab-nav {
@@ -266,7 +271,7 @@ footer {
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 32px); }
   .direction-card { padding: 24px; }
   .skill-grid { grid-template-columns: repeat(2, 1fr); }
-  .lang-toggle { margin-left: 2px; padding: 0 8px; font-size: 11px; }
+  .lang-toggle { padding: 0 8px; font-size: 11px; }
 }
 </style>
 </head>
@@ -280,8 +285,10 @@ footer {
     <li><a href="#skills" data-i18n="navSkills">技能</a></li>
     <li><a href="#contact" data-i18n="navContact">联系</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" aria-label="切换暗色模式" title="暗色模式">🌙</button>
-  <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch language"><span data-i18n="langSwitch">EN</span></button>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="切换暗色模式" title="暗色模式">🌙</button>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch language"><span data-i18n="langSwitch">EN</span></button>
+  </div>
 </nav>
 
 <section class="hero" id="hero">
