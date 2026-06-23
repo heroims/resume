@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>赵易奇 · 研发全栈工程师</title>
+<title data-i18n="title">赵易奇 · 研发全栈工程师</title>
 <style>
 :root {
   --bg:      oklch(99% 0.002 240);
@@ -187,31 +187,43 @@ footer {
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+.lang-toggle {
+  height: 36px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  transition: background .2s, color .2s;
+  font: 600 12px/1 var(--font-body);
+  letter-spacing: .03em;
+}
+.lang-toggle:hover { background: var(--border); color: var(--fg); }
+
 @media (max-width: 700px) {
   nav .links { gap: 14px; font-size: 13px; }
   section { padding: 56px clamp(16px, 4vw, 24px); }
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 32px); }
   .direction-card { padding: 24px; }
   .skill-grid { grid-template-columns: repeat(2, 1fr); }
+  .lang-toggle { padding: 0 8px; font-size: 11px; }
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">赵易奇 <span>· 研发</span></div>
+  <div class="logo"><span data-i18n="navLogo">赵易奇</span> <span data-i18n="navLogoSub">· 研发</span></div>
   <ul class="links">
-    <li><a href="#directions">方向</a></li>
-    <li><a href="#experience">经历</a></li>
-    <li><a href="#skills">技能</a></li>
-    <li><a href="#contact">联系</a></li>
+    <li><a href="#directions" data-i18n="navDirections">方向</a></li>
+    <li><a href="#experience" data-i18n="navExperience">经历</a></li>
+    <li><a href="#skills" data-i18n="navSkills">技能</a></li>
+    <li><a href="#contact" data-i18n="navContact">联系</a></li>
   </ul>
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch language"><span data-i18n="langSwitch">EN</span></button>
 </nav>
 
 <section class="hero" id="hero">
-  <p class="eyebrow">14 年研发 · 全栈 · 多领域</p>
-  <h1>赵易奇</h1>
-  <p class="tagline">
+  <p class="eyebrow" data-i18n="heroEyebrow">14 年研发 · 全栈 · 多领域</p>
+  <h1 data-i18n="heroName">赵易奇</h1>
+  <p class="tagline" data-i18n-html="heroTagline">
     6 年后端 + 7 年移动端 + 2 年工业机器人开发经验，
     期间均为研发核心带队攻坚。<br/>
     擅长 <strong>Go / Python / Solidity / Node.js / iOS / C++ / C#</strong>，
@@ -219,7 +231,7 @@ footer {
     <strong>移动端</strong>、<strong>后端架构</strong>、
     <strong>工业机器人</strong> 五大领域。
   </p>
-  <p class="tagline" style="margin-top:-20px;font-size:15px;color:var(--muted);max-width:65ch;">
+  <p class="tagline" style="margin-top:-20px;font-size:15px;color:var(--muted);max-width:65ch;" data-i18n="heroTagline2">
     最近熟练运用 OpenCode、Codex、Claude Code，配合 MCP 构建链上数据查询智能体。
     GitHub 开源多个项目，涵盖区块链、移动端、编译混淆、实时渲染等方向。
   </p>
@@ -238,17 +250,17 @@ footer {
     </a>
   </div>
   <dl class="stats-bar">
-    <div><dt>14</dt><dd>年研发经验</dd></div>
-    <div><dt>30+</dt><dd>喷涂机器人出货</dd></div>
-    <div><dt>10+</dt><dd>区块链项目</dd></div>
-    <div><dt>20+</dt><dd>移动端产品</dd></div>
-    <div><dt>6+</dt><dd>AI 项目</dd></div>
+    <div><dt>14</dt><dd data-i18n="statYears">年研发经验</dd></div>
+    <div><dt>30+</dt><dd data-i18n="statRobots">喷涂机器人出货</dd></div>
+    <div><dt>10+</dt><dd data-i18n="statBlockchain">区块链项目</dd></div>
+    <div><dt>20+</dt><dd data-i18n="statMobile">移动端产品</dd></div>
+    <div><dt>6+</dt><dd data-i18n="statAI">AI 项目</dd></div>
   </dl>
 </section>
 
 <section id="directions">
-  <p class="section-label">方向分类</p>
-  <h2>专业方向</h2>
+  <p class="section-label" data-i18n="dirLabel">方向分类</p>
+  <h2 data-i18n="dirTitle">专业方向</h2>
   <div class="directions">
 
     <div class="direction-card reveal">
@@ -256,16 +268,16 @@ footer {
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 2 1 3 2 4l-1 3h6l-1-3c1-1 2-2 2-4a4 4 0 0 0-4-4z"/><path d="M8 17h8"/><path d="M10 20h4"/><circle cx="12" cy="7" r="1.5"/></svg>
         </div>
-        <h3>AI Agent &amp; 计算机视觉</h3>
+        <h3 data-i18n="aiTitle">AI Agent &amp; 计算机视觉</h3>
       </div>
-      <p class="card-desc">
+      <p class="card-desc" data-i18n="aiDesc">
         跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、
         工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。
       </p>
       <div class="proj-list">
         <div class="proj-item">
-          <span class="proj-name">Agents Report · 跨 Agent 使用统计</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="aiP1Name">Agents Report · 跨 Agent 使用统计</span>
+          <span class="proj-desc" data-i18n="aiP1Desc">
             采集 Claude Code / Codex / OpenCode / Cursor / Trae / OpenClaw / Hermes 七款 AI Coding Agent
             使用数据，合并为统一报告并按周/月/季/年归档。附带 Flask Dashboard 与 AI 摘要。
           </span>
@@ -273,8 +285,8 @@ footer {
           <div class="proj-links"><a href="https://github.com/heroims/agents-report" target="_blank">GitHub ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">Resume Optimizer · AI 简历优化</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="aiP2Name">Resume Optimizer · AI 简历优化</span>
+          <span class="proj-desc" data-i18n="aiP2Desc">
             AI 驱动简历优化工具。支持 PDF/DOCX/HTML/MD 多格式上传，4 种优化模式（轻/中/深/自定义），
             ATS 评分、原稿对比、交互式对话优化。集成 Stripe &amp; 支付宝支付，中英双语界面。
           </span>
@@ -282,8 +294,8 @@ footer {
            <div class="proj-links"><a href="https://resume-optimization-theta.vercel.app/" target="_blank">Demo ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">Launchpad · Solana Token Launch Workstation</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="aiP3Name">Launchpad · Solana Token Launch Workstation</span>
+          <span class="proj-desc" data-i18n="aiP3Desc">
             API-first 发币工作站，支持 pump.fun / Raydium LaunchLab / Meteora DBC 多协议发币。
             AI 驱动 Token 参数生成、确定性校验、客户端签名，私钥零接触。
           </span>
@@ -291,24 +303,24 @@ footer {
           <div class="proj-links"><a href="https://github.com/heroims/launchpad" target="_blank">GitHub ↗</a><a href="https://launchpad-itvb.vercel.app/" target="_blank">Demo ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">链上数据查询 Lark Agent</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="aiP4Name">链上数据查询 Lark Agent</span>
+          <span class="proj-desc" data-i18n="aiP4Desc">
             ES + Kafka + Redis + MongoDB + SelectDB + PgSQL 飞书自然语言交互查询系统，
             支持 OpenCode / Codex + superpowers skill 编排自动化数据解析。
           </span>
           <div class="proj-tech"><span>Go</span><span>OpenCode</span><span>ES</span><span>Kafka</span><span>MCP</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">喷涂 AI 视觉识别</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="aiP5Name">喷涂 AI 视觉识别</span>
+          <span class="proj-desc" data-i18n="aiP5Desc">
             基于百度 EasyDL 的 2D 图像识别，自动识别工件类型并切换预设喷涂轨迹，
             实现不同工件混线生产的全自动适配。
           </span>
           <div class="proj-tech"><span>EasyDL</span><span>OpenCV</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">实时人脸识别 &amp; GPU 渲染</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="aiP6Name">实时人脸识别 &amp; GPU 渲染</span>
+          <span class="proj-desc" data-i18n="aiP6Desc">
             iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span><span>OpenGL</span></div>
@@ -321,16 +333,16 @@ footer {
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-        <h3>区块链 &amp; Web3 基建</h3>
+        <h3 data-i18n="bcTitle">区块链 &amp; Web3 基建</h3>
       </div>
-      <p class="card-desc">
+      <p class="card-desc" data-i18n="bcDesc">
         交易所级 DEX 数据聚合、多链扫描（EVM 扫块 + Solana Yellowstone gRPC）、
         智能合约、二层网络。主导 DeFi 数据从扫块到落库的全链路工程，支撑高频实时查询。
       </p>
       <div class="proj-list">
         <div class="proj-item">
-          <span class="proj-name">链上数据服务 · DEX 数据聚合</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP1Name">链上数据服务 · DEX 数据聚合</span>
+          <span class="proj-desc" data-i18n="bcP1Desc">
             Solana/BSC/Base 内外盘 DEX 数据入库，覆盖 pump、raydium、meteora、orca 等 20+ 协议。
             EVM 扫块 + Yellowstone gRPC 双通道，Kafka 清洗落库，Redis 实时热点，SelectDB 智能钱分析。
             K 线方案：早期 DB 直查 → 开高收低 Redis 缓存 + DB 持久化；指标数据 Redis 时间桶聚合。
@@ -342,15 +354,15 @@ footer {
           <div class="proj-links"><a href="https://www.bydfi.com/en/moonx/pump" target="_blank">BYDFi MoonX ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">Polymarket 预测市场数据</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP2Name">Polymarket 预测市场数据</span>
+          <span class="proj-desc" data-i18n="bcP2Desc">
             扫块拉取 Polymarket 链上数据，限频调用官方 API 数据入库，跑 DEX 相关逻辑。
           </span>
           <div class="proj-tech"><span>Go</span><span>gRPC</span><span>Kafka</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">Bitbot · Telegram Meme 交易平台</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP3Name">Bitbot · Telegram Meme 交易平台</span>
+          <span class="proj-desc" data-i18n="bcP3Desc">
             Base 链 Meme 币托管代购系统。Dexscreener/Geckoterminal 新币数据缓存，托管钱包整合交易，
             Telegram Bot（Node.js/Render）+ Miniapp（Next.js/Vercel）+ 运营后台 + NestJS 安全跳板（AWS）。
           </span>
@@ -360,8 +372,8 @@ footer {
           <div class="proj-links"><a href="https://bitbot.tg/zh" target="_blank">Bitbot ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">Meme Coin 多链预购/质押/空投</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP4Name">Meme Coin 多链预购/质押/空投</span>
+          <span class="proj-desc" data-i18n="bcP4Desc">
             EVM / TON / Solana 多链预购买、质押、空投分发。BRC20 转账解析，Unisat API 限频优化，
             Background Worker 异步处理。项目：Poodlana、Bitcoin Dogs、Solciety。
           </span>
@@ -369,8 +381,8 @@ footer {
           <div class="proj-links"><a href="https://poodlana.com/zh" target="_blank">Poodlana ↗</a><a href="https://bitcoindogs.club/zh" target="_blank">Bitcoin Dogs ↗</a><a href="https://solciety.io/zh" target="_blank">Solciety ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">MetaLife · 去中心化社交网络</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP5Name">MetaLife · 去中心化社交网络</span>
+          <span class="proj-desc" data-i18n="bcP5Desc">
             基于 SSB 协议的无服务器社交 + Spectrum 二层网络（Photon）支付 + 多链钱包。
             NFT 市场（一口价/拍卖）、DAO（众筹/提案/投票/执行）、Swap（MLT↔SMT 兑换）。
             BLE 蓝牙通信 + MDNS 局域网节点发现。
@@ -379,16 +391,16 @@ footer {
           <div class="proj-links"><a href="https://github.com/MetaLife-Protocol" target="_blank">GitHub ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">NostrV · Nostr Flutter 客户端</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP6Name">NostrV · Nostr Flutter 客户端</span>
+          <span class="proj-desc" data-i18n="bcP6Desc">
             支持推荐中继、闪电支付、HD Node 创建导入导出账户，覆盖 NIP 1/2/4/6/8/10/18/21/24/32/36/46/47/50/51/56/57/65。
           </span>
           <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>Nostr</span></div>
           <div class="proj-links"><a href="https://github.com/heroims/NostrV" target="_blank">GitHub ↗</a></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">比特儿 · 加密行情</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="bcP7Name">比特儿 · 加密行情</span>
+          <span class="proj-desc" data-i18n="bcP7Desc">
             BTC 山寨币行情 App，聚合多所行情数据、K 线图表与资产监控。早期区块链移动端实践。
           </span>
           <div class="proj-tech"><span>Objective-C</span></div>
@@ -401,92 +413,92 @@ footer {
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
         </div>
-        <h3>移动端开发</h3>
+        <h3 data-i18n="mbTitle">移动端开发</h3>
       </div>
-      <p class="card-desc">
+      <p class="card-desc" data-i18n="mbDesc">
         7 年 iOS 原生 + React Native + Flutter 多端架构经验。主导过千万级跨境电商、
         消费金融、短视频、AR 特效、社交、O2O 等 20+ 产品。
       </p>
       <div class="proj-list">
         <div class="proj-item">
-          <span class="proj-name">LOOK / LOOKMEN · 跨境电商</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP1Name">LOOK / LOOKMEN · 跨境电商</span>
+          <span class="proj-desc" data-i18n="mbP1Desc">
             LOOK 客户端 1.9.0+ 版本迭代：网络层重构、自动化构建实体和网络层、组件化设计、
             JSPatch 混淆热更新、Ollvm 混淆、Crash 防御体系、路由设计、iMessage / 3D Touch 商品预览、客服（七鱼/环信）。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>JSPatch</span><span>Ollvm</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">黑卡 · 消费金融</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP2Name">黑卡 · 消费金融</span>
+          <span class="proj-desc" data-i18n="mbP2Desc">
             人人友信集团旗下信用消费平台，带领 6 人研发团队完成全套 iOS 客户端。
             负责架构设计、网络层封装、公共组件、主页/账单/安全设置等核心模块。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>RN</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">24格 · 图片合成视频 / 短视频</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP3Name">24格 · 图片合成视频 / 短视频</span>
+          <span class="proj-desc" data-i18n="mbP3Desc">
             独立完成图片合成视频技术攻关（GPUImage GPU 加速），封装 SDK；录音及音频混合、
             视频添加音轨、预览+生成、VideoKit 流媒体播放、断点上传。项目架构 &amp; 接口设计。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span><span>VideoKit</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">Ollvm 代码混淆编译器</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP4Name">Ollvm 代码混淆编译器</span>
+          <span class="proj-desc" data-i18n="mbP4Desc">
             基于 LLVM 5.0 ~ 14.x 制作 Ollvm 混淆工具链，用于保护移动端客户端核心逻辑代码。
           </span>
           <div class="proj-tech"><span>C++</span><span>LLVM</span><span>Ollvm</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">SmartMesh · 区块链钱包 + 无网聊天</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP5Name">SmartMesh · 区块链钱包 + 无网聊天</span>
+          <span class="proj-desc" data-i18n="mbP5Desc">
             功能类似微信的区块链钱包，支持无网聊天（MultipeerConnectivity + MDNS）、
             光子网络（雷电）支付、MDNS 局域网节点发现。
           </span>
           <div class="proj-tech"><span>ObjC</span><span>RN</span><span>Ionic</span><span>Cordova</span><span>BLE</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">MeshBox · 路由器矿机控制端</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP6Name">MeshBox · 路由器矿机控制端</span>
+          <span class="proj-desc" data-i18n="mbP6Desc">
             路由器矿机 App，对接公链 Spectrum 和二层网络 Photon。
             原生端对接 openwrt luci，扩展 Ionic 版支持钱包功能（封装 Cordova 插件对接 web3j / ethers.framework）。
           </span>
           <div class="proj-tech"><span>ObjC</span><span>Ionic</span><span>Cordova</span><span>openwrt</span><span>Luci</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">咪呀分享 · 社区导购</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP7Name">咪呀分享 · 社区导购</span>
+          <span class="proj-desc" data-i18n="mbP7Desc">
             购买后分享社区。时间线形式展示，WebView + JS 收藏购买地址，
             GPUImage 实时渲染相机。独立完成前期研发及项目框架搭建。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">拍几秒 · AR 特效视频</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP8Name">拍几秒 · AR 特效视频</span>
+          <span class="proj-desc" data-i18n="mbP8Desc">
             GPUImage 视频合成特效 App，实现类似 AR 滤镜效果，导出至国外短视频平台。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">新梦城市 · 地方媒体</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP9Name">新梦城市 · 地方媒体</span>
+          <span class="proj-desc" data-i18n="mbP9Desc">
             地方媒体运营客户端，帮朋友公司搭建第一版。涵盖新闻资讯、活动发布、互动模块。
           </span>
           <div class="proj-tech"><span>Objective-C</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">播拍 · 图片制作视频</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP10Name">播拍 · 图片制作视频</span>
+          <span class="proj-desc" data-i18n="mbP10Desc">
             照片序列快速生成视频内容，支持多种转场动画与背景音乐自定义。
           </span>
           <div class="proj-tech"><span>Objective-C</span><span>GPUImage</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">录音笔记</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="mbP11Name">录音笔记</span>
+          <span class="proj-desc" data-i18n="mbP11Desc">
             手写 + 录音同步记录工具，笔迹与音频时间轴联动回放。
           </span>
           <div class="proj-tech"><span>Objective-C</span></div>
@@ -499,16 +511,16 @@ footer {
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         </div>
-        <h3>后端 &amp; 系统架构</h3>
+        <h3 data-i18n="beTitle">后端 &amp; 系统架构</h3>
       </div>
-      <p class="card-desc">
+      <p class="card-desc" data-i18n="beDesc">
         6 年后端开发经验，Go / Node.js / Python 为主。涵盖微服务、数据管道、Serverless、
         实时数据处理、高频交易系统。Next.js + TRPC Serverless 与 NestJS 长进程混合架构。
       </p>
       <div class="proj-list">
         <div class="proj-item">
-          <span class="proj-name">Meme 项目后端系统</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="beP1Name">Meme 项目后端系统</span>
+          <span class="proj-desc" data-i18n="beP1Desc">
             Next.js + TRPC + Prisma + PgSQL 多链（EVM/TON/Solana）预购/质押/提现系统。
             链上交易信息定时拉取解析，BRC20 转账异步处理（Background Worker on Render）。
             同步维护 Bitbot 全栈：Bot（Node.js/render）+ Miniapp（Next.js/vercel）+ 运营后台 + NestJS 安全跳板（AWS）。
@@ -516,16 +528,16 @@ footer {
           <div class="proj-tech"><span>Next.js</span><span>TRPC</span><span>Prisma</span><span>PostgreSQL</span><span>NestJS</span><span>Redis</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">K 线 &amp; 指标数据管道</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="beP2Name">K 线 &amp; 指标数据管道</span>
+          <span class="proj-desc" data-i18n="beP2Desc">
             开/高/收/低 Redis 缓存计算 + 数据库持久化。指标数据 Redis 时间桶聚合统计，
             支撑交易所级实时行情查询。
           </span>
           <div class="proj-tech"><span>Go</span><span>Redis</span><span>SelectDB</span><span>PostgreSQL</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">MPC 钱包 &amp; Jupiter 交易</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="beP3Name">MPC 钱包 &amp; Jupiter 交易</span>
+          <span class="proj-desc" data-i18n="beP3Desc">
             MPC 钱包配合 Jupiter 原生交易聚合，开发中过渡方案。
           </span>
           <div class="proj-tech"><span>Go</span><span>Solana</span><span>Jupiter</span></div>
@@ -538,24 +550,24 @@ footer {
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><path d="M6 12h12M6 12l-3-3M6 12l-3 3M18 12l3-3M18 12l3 3M12 6v12M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3"/><circle cx="12" cy="12" r="8"/></svg>
         </div>
-        <h3>工业机器人 &amp; 自动化</h3>
+        <h3 data-i18n="rbTitle">工业机器人 &amp; 自动化</h3>
       </div>
-      <p class="card-desc">
+      <p class="card-desc" data-i18n="rbDesc">
         作为总工带领软硬件及部署团队实现自动化喷涂机器人全栈研发，国内外累计出货 30+ 台。
         从 3D 扫描路径规划到多品牌机器人轨迹生成、PLC/OPC/TCP 通讯全链路。
       </p>
       <div class="proj-list">
         <div class="proj-item">
-          <span class="proj-name">智能喷涂系统</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="rbP1Name">智能喷涂系统</span>
+          <span class="proj-desc" data-i18n="rbP1Desc">
             自研线扫/散斑相机 3D 点云扫描 → PCL/OpenCV/OpenNI 特征提取 → 边框/大面轨迹规划 →
             喷涂工艺设计 → 多品牌离线编程。AI（EasyDL）2D 识别预设轨迹切换，混线全自动适配。
           </span>
           <div class="proj-tech"><span>C++</span><span>OpenCV</span><span>PCL</span><span>OpenNI</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">机器人通讯 &amp; 模块化中台</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="rbP2Name">机器人通讯 &amp; 模块化中台</span>
+          <span class="proj-desc" data-i18n="rbP2Desc">
             C# WPF 桌面工控上位机。PLC（安川 MP / 倍福 TwinCAT）+ OPC + TCP + IO 点位通讯。
             机器人模块（ABB/安川/Keba/纳博特/Codesys 自研）、扫描仪模块、AI 模块分拆 DLL 中台架构。
             Codesys ST 语言控制伺服电机，生成安川/Keba/纳博特及自研机器人轨迹。
@@ -563,15 +575,15 @@ footer {
           <div class="proj-tech"><span>C#</span><span>WPF</span><span>Codesys ST</span><span>PLC</span><span>OPC</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">3D 扫描仪固件开发</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="rbP3Name">3D 扫描仪固件开发</span>
+          <span class="proj-desc" data-i18n="rbP3Desc">
             树莓派上 C++ + libevent 起服务，crontab 定时 IO 检测复位，调用奥比中光/Intel 相机 SDK。
           </span>
           <div class="proj-tech"><span>C++</span><span>libevent</span><span>Raspberry Pi</span></div>
         </div>
         <div class="proj-item">
-          <span class="proj-name">基础设施 &amp; 研发效能</span>
-          <span class="proj-desc">
+          <span class="proj-name" data-i18n="rbP4Name">基础设施 &amp; 研发效能</span>
+          <span class="proj-desc" data-i18n="rbP4Desc">
             搭建 Git Gogs 代码托管 + Jitamin 研发任务管理；阿里云线上部署，Docker 容器化 + NuGet 私有包管理。
           </span>
           <div class="proj-tech"><span>Docker</span><span>Gogs</span><span>阿里云</span><span>NuGet</span></div>
@@ -584,15 +596,15 @@ footer {
 </section>
 
 <section id="experience">
-  <p class="section-label">工作经历</p>
-  <h2>职业时间线</h2>
+  <p class="section-label" data-i18n="expLabel">工作经历</p>
+  <h2 data-i18n="expTitle">职业时间线</h2>
   <div class="timeline">
 
     <div class="timeline-item reveal">
       <p class="period">2024.10 — 2026.05</p>
-      <p class="role">区块链开发工程师 · 链上数据服务</p>
-      <p class="company"><a href="https://www.bydfi.com/en/moonx/pump" target="_blank" style="color:inherit;text-decoration:none;">BYDFi</a> <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;">· 远程全职</span></p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp1Role">区块链开发工程师 · 链上数据服务</p>
+      <p class="company"><a href="https://www.bydfi.com/en/moonx/pump" target="_blank" style="color:inherit;text-decoration:none;">BYDFi</a> <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;" data-i18n="exp1Remote">· 远程全职</span></p>
+      <ul class="highlights" data-i18n-html="exp1Highlights">
         <li>OpenCode + MCP（ES/Kafka/Redis/MongoDB/SelectDB/PgSQL）编写 Skill &amp; AGENT.md 定义边界及流程，支持飞书自然语言交互查询链上数据</li>
         <li>Polymarket 预测市场扫块数据 + 限频官方 API 数据入库，跑 DEX 相关逻辑</li>
         <li>Codex / Claude Code + superpowers 编写 Skills 定义流程和边界，自动化生成 DEX 数据解析代码模块</li>
@@ -605,9 +617,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2024.05 — 2024.09</p>
-      <p class="role">区块链后端交易研发</p>
-      <p class="company">德州昭望科技有限公司 <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;">· 远程全职</span></p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp2Role">区块链后端交易研发</p>
+      <p class="company"><span data-i18n="exp2Company">德州昭望科技有限公司</span> <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;" data-i18n="exp2Remote">· 远程全职</span></p>
+      <ul class="highlights" data-i18n-html="exp2Highlights">
         <li>Meme 项目多链（EVM/TON/Solana）预购/质押/提现系统，Next.js + TRPC + Vercel + PgSQL</li>
         <li>链上交易包装特殊信息上链，解析包装数据，到期分发 EVM/TON/Solana/BRC20 Token</li>
         <li>Bitbot Base 链 Meme 交易平台：Telegram Bot（Node.js/Render）+ Miniapp（Next.js/Vercel）+ 运营管理平台 + NestJS 安全跳板（AWS）</li>
@@ -618,9 +630,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2021.10 — 2024.10</p>
-      <p class="role">区块链应用及移动应用负责人</p>
-      <p class="company">SmartMesh · MetaLife <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;">· 北京 / 远程混合</span></p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp3Role">区块链应用及移动应用负责人</p>
+      <p class="company">SmartMesh · MetaLife <span style="color:var(--accent);font-size:12px;font-weight:510;letter-spacing:.02em;" data-i18n="exp3Remote">· 北京 / 远程混合</span></p>
+      <ul class="highlights" data-i18n-html="exp3Highlights">
         <li>MetaLife 去中心化社交：SSB 协议 BLE 蓝牙通信实现无服务器社交通讯</li>
         <li>React Native 区块链钱包基础架构 + Spectrum 二层网络（Photon）集成</li>
         <li>NFT 市场整体架构（一口价 + 拍卖）、DAO 合约及应用（众筹/提案/投票/执行，支持 ERC20/ERC721）</li>
@@ -631,9 +643,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2019.05 — 2021.06</p>
-      <p class="role">总工程师</p>
-      <p class="company">北京曲线智能装备有限公司</p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp4Role">总工程师</p>
+      <p class="company" data-i18n="exp4Company">北京曲线智能装备有限公司</p>
+      <ul class="highlights" data-i18n-html="exp4Highlights">
         <li>自动化喷涂机器人全栈研发，国内国外累计出货 30+ 台</li>
         <li>WPF 桌面工控上位机 + C++ OpenCV/PCL/OpenNI 点云路径规划</li>
         <li>安川 MP + IO 点位产线控制 → Codesys ST 伺服电机，生成安川/Keba/纳博特及自研机器人轨迹</li>
@@ -644,9 +656,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2018.03 — 2019.02</p>
-      <p class="role">Mobile Leader</p>
+      <p class="role" data-i18n="exp5Role">Mobile Leader</p>
       <p class="company">SmartMesh · MeshBox</p>
-      <ul class="highlights">
+      <ul class="highlights" data-i18n-html="exp5Highlights">
         <li>MeshBox 路由器矿机控制端 App，对接公链 Spectrum 和二层网络 Photon</li>
         <li>移动端对接 openwrt luci；Ionic + Cordova 插件封装支持 Android web3j 和 iOS ethers.framework</li>
         <li>跨国团队协同完成户外版 MeshBox</li>
@@ -655,9 +667,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2016.10 — 2018.02</p>
-      <p class="role">iOS Leader</p>
-      <p class="company">言之有物 · LOOK / LOOKMEN</p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp6Role">iOS Leader</p>
+      <p class="company" data-i18n="exp6Company">言之有物 · LOOK / LOOKMEN</p>
+      <ul class="highlights" data-i18n-html="exp6Highlights">
         <li>LOOK 客户端 1.9.0+ 版本：自动化打包、网络层重构、自动化构建实体和网络层、JSPatch 混淆热更新、组件化设计</li>
         <li>切面本地化/统计、Crash 防御、Ollvm 混淆、Router 设计、客服（七鱼/环信）、iMessage、3D Touch 商品预览</li>
         <li>LOOKMEN 客户端开发</li>
@@ -666,9 +678,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2015.05 — 2016.07</p>
-      <p class="role">iOS Leader</p>
-      <p class="company">人人贷 · 黑卡</p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp7Role">iOS Leader</p>
+      <p class="company" data-i18n="exp7Company">人人贷 · 黑卡</p>
+      <ul class="highlights" data-i18n-html="exp7Highlights">
         <li>带领 6 人研发团队完成黑卡客户端研发</li>
         <li>项目架构、网络层封装、公共组件开发、主页/账单/安全设置等核心模块</li>
       </ul>
@@ -676,9 +688,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2014.08 — 2015.04</p>
-      <p class="role">iOS 资深工程师 · 主管</p>
-      <p class="company">搜狐畅游 · 2035 游戏学院</p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp8Role">iOS 资深工程师 · 主管</p>
+      <p class="company" data-i18n="exp8Company">搜狐畅游 · 2035 游戏学院</p>
+      <ul class="highlights" data-i18n-html="exp8Highlights">
         <li>带一名工程师完成 2035 创新社区 &amp; 游戏学院客户端研发</li>
         <li>负责登录、注册、主页、广场、开发者排名等主功能開發</li>
       </ul>
@@ -686,9 +698,9 @@ footer {
 
     <div class="timeline-item reveal">
       <p class="period">2012.06 — 2014.07</p>
-      <p class="role">iOS 技术总监</p>
-      <p class="company">北京西瓜藤网络科技</p>
-      <ul class="highlights">
+      <p class="role" data-i18n="exp9Role">iOS 技术总监</p>
+      <p class="company" data-i18n="exp9Company">北京西瓜藤网络科技</p>
+      <ul class="highlights" data-i18n-html="exp9Highlights">
         <li>咪呀分享：社区导购平台，前期独立开发后期带学员优化，GPUImage 实时渲染相机</li>
         <li>24 格：GPUImage GPU 加速图片合成视频 + 录音混音 + VideoKit 流媒体播放 + 断点上传，独立完成技术攻破及架构</li>
         <li>美集：影楼线上管理 &amp; 云相册平台，1.0.0~2.1.1 全版本独立开发，iOS7 适配</li>
@@ -700,46 +712,46 @@ footer {
 </section>
 
 <section id="skills">
-  <p class="section-label">专业技能</p>
-  <h2>技术栈</h2>
+  <p class="section-label" data-i18n="skillLabel">专业技能</p>
+  <h2 data-i18n="skillTitle">技术栈</h2>
   <div class="skill-grid">
     <div class="skill-group">
-      <h4>区块链</h4>
+      <h4 data-i18n="skillBlockchain">区块链</h4>
       <div class="tags">
         <span>Solidity</span><span>EVM</span><span>Solana</span><span>TON</span><span>BRC20</span>
         <span>Go</span><span>Web3.js</span><span>Ethers</span><span>gRPC</span>
       </div>
     </div>
     <div class="skill-group">
-      <h4>后端</h4>
+      <h4 data-i18n="skillBackend">后端</h4>
       <div class="tags">
         <span>Go</span><span>Python</span><span>Node.js</span><span>Next.js</span><span>NestJS</span>
         <span>TRPC</span><span>Kafka</span><span>Redis</span><span>MCP</span>
       </div>
     </div>
     <div class="skill-group">
-      <h4>数据库</h4>
+      <h4 data-i18n="skillDB">数据库</h4>
       <div class="tags">
         <span>PostgreSQL</span><span>MongoDB</span><span>SelectDB</span><span>Elasticsearch</span>
         <span>MySQL</span><span>Prisma</span><span>GORM</span>
       </div>
     </div>
     <div class="skill-group">
-      <h4>移动端</h4>
+      <h4 data-i18n="skillMobile">移动端</h4>
       <div class="tags">
         <span>iOS / ObjC</span><span>React Native</span><span>Flutter</span><span>Ionic</span>
         <span>GPUImage</span><span>JSPatch</span>
       </div>
     </div>
     <div class="skill-group">
-      <h4>工控 &amp; 机器人</h4>
+      <h4 data-i18n="skillIndustrial">工控 &amp; 机器人</h4>
       <div class="tags">
         <span>C++</span><span>OpenCV</span><span>PCL</span><span>WPF / C#</span>
         <span>Codesys ST</span><span>PLC</span><span>OPC</span><span>OpenNI</span>
       </div>
     </div>
     <div class="skill-group">
-      <h4>AI Agent &amp; 工具</h4>
+      <h4 data-i18n="skillAI">AI Agent &amp; 工具</h4>
       <div class="tags">
         <span>MCP</span><span>OpenCode</span><span>Claude Code</span><span>Codex</span>
         <span>Cursor</span><span>AI SDK</span><span>Flask</span><span>EasyDL</span>
@@ -750,20 +762,20 @@ footer {
 </section>
 
 <section id="education">
-  <p class="section-label">教育 &amp; 认证</p>
-  <h2>教育背景</h2>
+  <p class="section-label" data-i18n="eduLabel">教育 &amp; 认证</p>
+  <h2 data-i18n="eduTitle">教育背景</h2>
   <div class="edu-grid">
     <div class="edu-card">
-      <p>东北林业大学</p>
-      <p class="sub">软件工程 · 本科 · 2021—2023</p>
+      <p data-i18n="edu1Name">东北林业大学</p>
+      <p class="sub" data-i18n="edu1Desc">软件工程 · 本科 · 2021—2023</p>
     </div>
     <div class="edu-card">
-      <p>山东海天软件工程学院</p>
-      <p class="sub">计算机应用与技术 · 大三肄业 · 2009—2012</p>
+      <p data-i18n="edu2Name">山东海天软件工程学院</p>
+      <p class="sub" data-i18n="edu2Desc">计算机应用与技术 · 大三肄业 · 2009—2012</p>
     </div>
     <div class="edu-card">
-      <p>认证 &amp; 获奖</p>
-      <p class="sub">
+      <p data-i18n="edu3Name">认证 &amp; 获奖</p>
+      <p class="sub" data-i18n-html="edu3Desc">
         MCP 微软认证专家 (2011)<br/>
         MCTS 微软认证技术工程师 (2012)<br/>
         齐鲁软件大赛 iPhone 组二等奖 (2011)
@@ -773,9 +785,9 @@ footer {
 </section>
 
 <section id="contact">
-  <p class="section-label">联系</p>
-  <h2>取得联系</h2>
-  <p style="color:var(--muted);max-width:56ch;font-size:15px;">
+  <p class="section-label" data-i18n="contactLabel">联系</p>
+  <h2 data-i18n="contactTitle">取得联系</h2>
+  <p style="color:var(--muted);max-width:56ch;font-size:15px;" data-i18n="contactDesc">
      当前在济南，期望研发相关岗位。欢迎通过以下方式联系。
   </p>
   <div class="contact-links">
@@ -795,19 +807,351 @@ footer {
 </section>
 
 <footer>
-  <p>赵易奇 · heroims@163.com · 2025</p>
+  <p data-i18n="footer">赵易奇 · heroims@163.com · 2025</p>
 </footer>
 
 <script>
 (function() {
-  var els = document.querySelectorAll('.reveal');
-  if (!els.length) return;
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+
+  var I18N = {
+    zh: {
+      title: '赵易奇 · 研发全栈工程师',
+      navLogo: '赵易奇',
+      navLogoSub: '· 研发',
+      navDirections: '方向',
+      navExperience: '经历',
+      navSkills: '技能',
+      navContact: '联系',
+      langSwitch: 'EN',
+      heroEyebrow: '14 年研发 · 全栈 · 多领域',
+      heroName: '赵易奇',
+      heroTagline: '6 年后端 + 7 年移动端 + 2 年工业机器人开发经验，\n期间均为研发核心带队攻坚。<br/>\n擅长 <strong>Go / Python / Solidity / Node.js / iOS / C++ / C#</strong>，\n横跨 <strong>AI Agent &amp; 计算机视觉</strong>、<strong>区块链</strong>、\n<strong>移动端</strong>、<strong>后端架构</strong>、\n<strong>工业机器人</strong> 五大领域。',
+      heroTagline2: '最近熟练运用 OpenCode、Codex、Claude Code，配合 MCP 构建链上数据查询智能体。\nGitHub 开源多个项目，涵盖区块链、移动端、编译混淆、实时渲染等方向。',
+      statYears: '年研发经验',
+      statRobots: '喷涂机器人出货',
+      statBlockchain: '区块链项目',
+      statMobile: '移动端产品',
+      statAI: 'AI 项目',
+      dirLabel: '方向分类',
+      dirTitle: '专业方向',
+      aiTitle: 'AI Agent & 计算机视觉',
+      aiDesc: '跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。',
+      aiP1Name: 'Agents Report · 跨 Agent 使用统计',
+      aiP1Desc: '采集 Claude Code / Codex / OpenCode / Cursor / Trae / OpenClaw / Hermes 七款 AI Coding Agent 使用数据，合并为统一报告并按周/月/季/年归档。附带 Flask Dashboard 与 AI 摘要。',
+      aiP2Name: 'Resume Optimizer · AI 简历优化',
+      aiP2Desc: 'AI 驱动简历优化工具。支持 PDF/DOCX/HTML/MD 多格式上传，4 种优化模式（轻/中/深/自定义），ATS 评分、原稿对比、交互式对话优化。集成 Stripe & 支付宝支付，中英双语界面。',
+      aiP3Name: 'Launchpad · Solana Token Launch Workstation',
+      aiP3Desc: 'API-first 发币工作站，支持 pump.fun / Raydium LaunchLab / Meteora DBC 多协议发币。AI 驱动 Token 参数生成、确定性校验、客户端签名，私钥零接触。',
+      aiP4Name: '链上数据查询 Lark Agent',
+      aiP4Desc: 'ES + Kafka + Redis + MongoDB + SelectDB + PgSQL 飞书自然语言交互查询系统，支持 OpenCode / Codex + superpowers skill 编排自动化数据解析。',
+      aiP5Name: '喷涂 AI 视觉识别',
+      aiP5Desc: '基于百度 EasyDL 的 2D 图像识别，自动识别工件类型并切换预设喷涂轨迹，实现不同工件混线生产的全自动适配。',
+      aiP6Name: '实时人脸识别 & GPU 渲染',
+      aiP6Desc: 'iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。',
+      bcTitle: '区块链 & Web3 基建',
+      bcDesc: '交易所级 DEX 数据聚合、多链扫描（EVM 扫块 + Solana Yellowstone gRPC）、智能合约、二层网络。主导 DeFi 数据从扫块到落库的全链路工程，支撑高频实时查询。',
+      bcP1Name: '链上数据服务 · DEX 数据聚合',
+      bcP1Desc: 'Solana/BSC/Base 内外盘 DEX 数据入库，覆盖 pump、raydium、meteora、orca 等 20+ 协议。EVM 扫块 + Yellowstone gRPC 双通道，Kafka 清洗落库，Redis 实时热点，SelectDB 智能钱分析。K 线方案：早期 DB 直查 → 开高收低 Redis 缓存 + DB 持久化；指标数据 Redis 时间桶聚合。',
+      bcP2Name: 'Polymarket 预测市场数据',
+      bcP2Desc: '扫块拉取 Polymarket 链上数据，限频调用官方 API 数据入库，跑 DEX 相关逻辑。',
+      bcP3Name: 'Bitbot · Telegram Meme 交易平台',
+      bcP3Desc: 'Base 链 Meme 币托管代购系统。Dexscreener/Geckoterminal 新币数据缓存，托管钱包整合交易，Telegram Bot（Node.js/Render）+ Miniapp（Next.js/Vercel）+ 运营后台 + NestJS 安全跳板（AWS）。',
+      bcP4Name: 'Meme Coin 多链预购/质押/空投',
+      bcP4Desc: 'EVM / TON / Solana 多链预购买、质押、空投分发。BRC20 转账解析，Unisat API 限频优化，Background Worker 异步处理。项目：Poodlana、Bitcoin Dogs、Solciety。',
+      bcP5Name: 'MetaLife · 去中心化社交网络',
+      bcP5Desc: '基于 SSB 协议的无服务器社交 + Spectrum 二层网络（Photon）支付 + 多链钱包。NFT 市场（一口价/拍卖）、DAO（众筹/提案/投票/执行）、Swap（MLT↔SMT 兑换）。BLE 蓝牙通信 + MDNS 局域网节点发现。',
+      bcP6Name: 'NostrV · Nostr Flutter 客户端',
+      bcP6Desc: '支持推荐中继、闪电支付、HD Node 创建导入导出账户，覆盖 NIP 1/2/4/6/8/10/18/21/24/32/36/46/47/50/51/56/57/65。',
+      bcP7Name: '比特儿 · 加密行情',
+      bcP7Desc: 'BTC 山寨币行情 App，聚合多所行情数据、K 线图表与资产监控。早期区块链移动端实践。',
+      mbTitle: '移动端开发',
+      mbDesc: '7 年 iOS 原生 + React Native + Flutter 多端架构经验。主导过千万级跨境电商、消费金融、短视频、AR 特效、社交、O2O 等 20+ 产品。',
+      mbP1Name: 'LOOK / LOOKMEN · 跨境电商',
+      mbP1Desc: 'LOOK 客户端 1.9.0+ 版本迭代：网络层重构、自动化构建实体和网络层、组件化设计、JSPatch 混淆热更新、Ollvm 混淆、Crash 防御体系、路由设计、iMessage / 3D Touch 商品预览、客服（七鱼/环信）。',
+      mbP2Name: '黑卡 · 消费金融',
+      mbP2Desc: '人人友信集团旗下信用消费平台，带领 6 人研发团队完成全套 iOS 客户端。负责架构设计、网络层封装、公共组件、主页/账单/安全设置等核心模块。',
+      mbP3Name: '24格 · 图片合成视频 / 短视频',
+      mbP3Desc: '独立完成图片合成视频技术攻关（GPUImage GPU 加速），封装 SDK；录音及音频混合、视频添加音轨、预览+生成、VideoKit 流媒体播放、断点上传。项目架构 & 接口设计。',
+      mbP4Name: 'Ollvm 代码混淆编译器',
+      mbP4Desc: '基于 LLVM 5.0 ~ 14.x 制作 Ollvm 混淆工具链，用于保护移动端客户端核心逻辑代码。',
+      mbP5Name: 'SmartMesh · 区块链钱包 + 无网聊天',
+      mbP5Desc: '功能类似微信的区块链钱包，支持无网聊天（MultipeerConnectivity + MDNS）、光子网络（雷电）支付、MDNS 局域网节点发现。',
+      mbP6Name: 'MeshBox · 路由器矿机控制端',
+      mbP6Desc: '路由器矿机 App，对接公链 Spectrum 和二层网络 Photon。原生端对接 openwrt luci，扩展 Ionic 版支持钱包功能（封装 Cordova 插件对接 web3j / ethers.framework）。',
+      mbP7Name: '咪呀分享 · 社区导购',
+      mbP7Desc: '购买后分享社区。时间线形式展示，WebView + JS 收藏购买地址，GPUImage 实时渲染相机。独立完成前期研发及项目框架搭建。',
+      mbP8Name: '拍几秒 · AR 特效视频',
+      mbP8Desc: 'GPUImage 视频合成特效 App，实现类似 AR 滤镜效果，导出至国外短视频平台。',
+      mbP9Name: '新梦城市 · 地方媒体',
+      mbP9Desc: '地方媒体运营客户端，帮朋友公司搭建第一版。涵盖新闻资讯、活动发布、互动模块。',
+      mbP10Name: '播拍 · 图片制作视频',
+      mbP10Desc: '照片序列快速生成视频内容，支持多种转场动画与背景音乐自定义。',
+      mbP11Name: '录音笔记',
+      mbP11Desc: '手写 + 录音同步记录工具，笔迹与音频时间轴联动回放。',
+      beTitle: '后端 & 系统架构',
+      beDesc: '6 年后端开发经验，Go / Node.js / Python 为主。涵盖微服务、数据管道、Serverless、实时数据处理、高频交易系统。Next.js + TRPC Serverless 与 NestJS 长进程混合架构。',
+      beP1Name: 'Meme 项目后端系统',
+      beP1Desc: 'Next.js + TRPC + Prisma + PgSQL 多链（EVM/TON/Solana）预购/质押/提现系统。链上交易信息定时拉取解析，BRC20 转账异步处理（Background Worker on Render）。同步维护 Bitbot 全栈：Bot（Node.js/render）+ Miniapp（Next.js/vercel）+ 运营后台 + NestJS 安全跳板（AWS）。',
+      beP2Name: 'K 线 & 指标数据管道',
+      beP2Desc: '开/高/收/低 Redis 缓存计算 + 数据库持久化。指标数据 Redis 时间桶聚合统计，支撑交易所级实时行情查询。',
+      beP3Name: 'MPC 钱包 & Jupiter 交易',
+      beP3Desc: 'MPC 钱包配合 Jupiter 原生交易聚合，开发中过渡方案。',
+      rbTitle: '工业机器人 & 自动化',
+      rbDesc: '作为总工带领软硬件及部署团队实现自动化喷涂机器人全栈研发，国内外累计出货 30+ 台。从 3D 扫描路径规划到多品牌机器人轨迹生成、PLC/OPC/TCP 通讯全链路。',
+      rbP1Name: '智能喷涂系统',
+      rbP1Desc: '自研线扫/散斑相机 3D 点云扫描 → PCL/OpenCV/OpenNI 特征提取 → 边框/大面轨迹规划 → 喷涂工艺设计 → 多品牌离线编程。AI（EasyDL）2D 识别预设轨迹切换，混线全自动适配。',
+      rbP2Name: '机器人通讯 & 模块化中台',
+      rbP2Desc: 'C# WPF 桌面工控上位机。PLC（安川 MP / 倍福 TwinCAT）+ OPC + TCP + IO 点位通讯。机器人模块（ABB/安川/Keba/纳博特/Codesys 自研）、扫描仪模块、AI 模块分拆 DLL 中台架构。Codesys ST 语言控制伺服电机，生成安川/Keba/纳博特及自研机器人轨迹。',
+      rbP3Name: '3D 扫描仪固件开发',
+      rbP3Desc: '树莓派上 C++ + libevent 起服务，crontab 定时 IO 检测复位，调用奥比中光/Intel 相机 SDK。',
+      rbP4Name: '基础设施 & 研发效能',
+      rbP4Desc: '搭建 Git Gogs 代码托管 + Jitamin 研发任务管理；阿里云线上部署，Docker 容器化 + NuGet 私有包管理。',
+      expLabel: '工作经历',
+      expTitle: '职业时间线',
+      exp1Role: '区块链开发工程师 · 链上数据服务',
+      exp1Remote: '· 远程全职',
+      exp1Highlights: '<li>OpenCode + MCP（ES/Kafka/Redis/MongoDB/SelectDB/PgSQL）编写 Skill &amp; AGENT.md 定义边界及流程，支持飞书自然语言交互查询链上数据</li><li>Polymarket 预测市场扫块数据 + 限频官方 API 数据入库，跑 DEX 相关逻辑</li><li>Codex / Claude Code + superpowers 编写 Skills 定义流程和边界，自动化生成 DEX 数据解析代码模块</li><li>Solana / BSC / Base 内外盘 DEX 数据入库：pump（pumpfun/pumswap）、raydium（clmm/cpmm/launchpad）、meteora（dbc/dlmm/damm/damm v2）、orca（wp/swapv2）、boop、moonit、sugar、heaven、trends、pancake（v2/v3/v4/solana）、uniswap（v2/v3/v4）、flap、fourmeme、aerodrome（cl/slip/base）、zora、dopper、clanker、flaunch 等 20+ 协议</li><li>EVM 扫块 + Solana Yellowstone gRPC 双通道监听，数据入 Kafka 由各业务服务消费清洗</li><li>K 线方案：早期 DB 直查 → Redis 开高收低缓存 + DB 持久化；指标数据 Redis 时间桶统计</li><li>MPC 钱包 + Jupiter 原生交易过渡</li>',
+      exp2Role: '区块链后端交易研发',
+      exp2Company: '德州昭望科技有限公司',
+      exp2Remote: '· 远程全职',
+      exp2Highlights: '<li>Meme 项目多链（EVM/TON/Solana）预购/质押/提现系统，Next.js + TRPC + Vercel + PgSQL</li><li>链上交易包装特殊信息上链，解析包装数据，到期分发 EVM/TON/Solana/BRC20 Token</li><li>Bitbot Base 链 Meme 交易平台：Telegram Bot（Node.js/Render）+ Miniapp（Next.js/Vercel）+ 运营管理平台 + NestJS 安全跳板（AWS）</li><li>Dexscreener/Geckoterminal 新币数据 Redis 缓存，对接托管钱包整合交易</li><li>用户量短期 3w~1000 并发，稳定运行支持提现/质押</li>',
+      exp3Role: '区块链应用及移动应用负责人',
+      exp3Remote: '· 北京 / 远程混合',
+      exp3Highlights: '<li>MetaLife 去中心化社交：SSB 协议 BLE 蓝牙通信实现无服务器社交通讯</li><li>React Native 区块链钱包基础架构 + Spectrum 二层网络（Photon）集成</li><li>NFT 市场整体架构（一口价 + 拍卖）、DAO 合约及应用（众筹/提案/投票/执行，支持 ERC20/ERC721）</li><li>Swap 合约：MLT 与 SMT 兑换比例设置及互相兑换</li><li>Filecoin Titan Go SDK 扩展支持移动端</li>',
+      exp4Role: '总工程师',
+      exp4Company: '北京曲线智能装备有限公司',
+      exp4Highlights: '<li>自动化喷涂机器人全栈研发，国内国外累计出货 30+ 台</li><li>WPF 桌面工控上位机 + C++ OpenCV/PCL/OpenNI 点云路径规划</li><li>安川 MP + IO 点位产线控制 → Codesys ST 伺服电机，生成安川/Keba/纳博特及自研机器人轨迹</li><li>树莓派 libevent 服务 + 奥比/Intel 相机 SDK 3D 扫描</li><li>搭建 Git Gogs + Jitamin + 阿里云 Docker NuGet 私有部署</li>',
+      exp5Role: 'Mobile Leader',
+      exp5Highlights: '<li>MeshBox 路由器矿机控制端 App，对接公链 Spectrum 和二层网络 Photon</li><li>移动端对接 openwrt luci；Ionic + Cordova 插件封装支持 Android web3j 和 iOS ethers.framework</li><li>跨国团队协同完成户外版 MeshBox</li>',
+      exp6Role: 'iOS Leader',
+      exp6Company: '言之有物 · LOOK / LOOKMEN',
+      exp6Highlights: '<li>LOOK 客户端 1.9.0+ 版本：自动化打包、网络层重构、自动化构建实体和网络层、JSPatch 混淆热更新、组件化设计</li><li>切面本地化/统计、Crash 防御、Ollvm 混淆、Router 设计、客服（七鱼/环信）、iMessage、3D Touch 商品预览</li><li>LOOKMEN 客户端开发</li>',
+      exp7Role: 'iOS Leader',
+      exp7Company: '人人贷 · 黑卡',
+      exp7Highlights: '<li>带领 6 人研发团队完成黑卡客户端研发</li><li>项目架构、网络层封装、公共组件开发、主页/账单/安全设置等核心模块</li>',
+      exp8Role: 'iOS 资深工程师 · 主管',
+      exp8Company: '搜狐畅游 · 2035 游戏学院',
+      exp8Highlights: '<li>带一名工程师完成 2035 创新社区 &amp; 游戏学院客户端研发</li><li>负责登录、注册、主页、广场、开发者排名等主功能開發</li>',
+      exp9Role: 'iOS 技术总监',
+      exp9Company: '北京西瓜藤网络科技',
+      exp9Highlights: '<li>咪呀分享：社区导购平台，前期独立开发后期带学员优化，GPUImage 实时渲染相机</li><li>24 格：GPUImage GPU 加速图片合成视频 + 录音混音 + VideoKit 流媒体播放 + 断点上传，独立完成技术攻破及架构</li><li>美集：影楼线上管理 &amp; 云相册平台，1.0.0~2.1.1 全版本独立开发，iOS7 适配</li><li>约拍：O2O 摄影师平台，客户端独立研发 + 后台接口制定 + 交易系统设计</li>',
+      skillLabel: '专业技能',
+      skillTitle: '技术栈',
+      skillBlockchain: '区块链',
+      skillBackend: '后端',
+      skillDB: '数据库',
+      skillMobile: '移动端',
+      skillIndustrial: '工控 & 机器人',
+      skillAI: 'AI Agent & 工具',
+      eduLabel: '教育 & 认证',
+      eduTitle: '教育背景',
+      edu1Name: '东北林业大学',
+      edu1Desc: '软件工程 · 本科 · 2021—2023',
+      edu2Name: '山东海天软件工程学院',
+      edu2Desc: '计算机应用与技术 · 大三肄业 · 2009—2012',
+      edu3Name: '认证 & 获奖',
+      edu3Desc: 'MCP 微软认证专家 (2011)<br/>MCTS 微软认证技术工程师 (2012)<br/>齐鲁软件大赛 iPhone 组二等奖 (2011)',
+      contactLabel: '联系',
+      contactTitle: '取得联系',
+      contactDesc: '当前在济南，期望研发相关岗位。欢迎通过以下方式联系。',
+      footer: '赵易奇 · heroims@163.com · 2025'
+    },
+    en: {
+      title: 'Yiqi Zhao · Full-Stack R&D Engineer',
+      navLogo: 'Yiqi Zhao',
+      navLogoSub: '· R&D',
+      navDirections: 'Focus',
+      navExperience: 'Experience',
+      navSkills: 'Skills',
+      navContact: 'Contact',
+      langSwitch: '中文',
+      heroEyebrow: '14 YEARS R&D · FULL-STACK · MULTI-DOMAIN',
+      heroName: 'Yiqi Zhao',
+      heroTagline: '6 years backend + 7 years mobile + 2 years industrial robotics,\nalways leading core R&D teams.<br/>\nProficient in <strong>Go / Python / Solidity / Node.js / iOS / C++ / C#</strong>,\nspanning <strong>AI Agent &amp; Computer Vision</strong>, <strong>Blockchain</strong>,\n<strong>Mobile</strong>, <strong>Backend Architecture</strong>,\n<strong>Industrial Robotics</strong>.',
+      heroTagline2: 'Recently proficient with OpenCode, Codex, Claude Code, building on-chain data query agents with MCP.\nOpen-source projects on GitHub covering blockchain, mobile, compiler obfuscation, and real-time rendering.',
+      statYears: 'Years R&D',
+      statRobots: 'Spray Robots Shipped',
+      statBlockchain: 'Blockchain Projects',
+      statMobile: 'Mobile Products',
+      statAI: 'AI Projects',
+      dirLabel: 'CATEGORIES',
+      dirTitle: 'Professional Focus',
+      aiTitle: 'AI Agent & Computer Vision',
+      aiDesc: 'Cross-agent usage data collection & analysis, Solana token launch AI workstation, Lark NL data query agent, industrial vision recognition, mobile real-time rendering. Integrating AI throughout the dev toolchain and visual intelligence.',
+      aiP1Name: 'Agents Report · Cross-Agent Usage Stats',
+      aiP1Desc: 'Collects usage data from 7 AI Coding Agents: Claude Code / Codex / OpenCode / Cursor / Trae / OpenClaw / Hermes. Merged into unified reports with weekly/monthly/quarterly/yearly archives. Includes Flask Dashboard and AI summaries.',
+      aiP2Name: 'Resume Optimizer · AI Resume Optimization',
+      aiP2Desc: 'AI-driven resume optimization tool. Supports PDF/DOCX/HTML/MD uploads, 4 optimization modes, ATS scoring, side-by-side comparison, and interactive dialogue optimization. Integrated with Stripe & Alipay, bilingual UI.',
+      aiP3Name: 'Launchpad · Solana Token Launch Workstation',
+      aiP3Desc: 'API-first token launch workstation supporting pump.fun / Raydium LaunchLab / Meteora DBC multi-protocol. AI-driven token parameter generation, deterministic validation, client-side signing with zero private key exposure.',
+      aiP4Name: 'On-Chain Data Query Lark Agent',
+      aiP4Desc: 'ES + Kafka + Redis + MongoDB + SelectDB + PgSQL Lark natural language interactive query system, with OpenCode / Codex + superpowers skill orchestration for automated data parsing.',
+      aiP5Name: 'Spray AI Vision Recognition',
+      aiP5Desc: 'Baidu EasyDL-based 2D image recognition that automatically identifies workpiece types and switches preset spray trajectories, enabling fully automatic adaptation for mixed-line production.',
+      aiP6Name: 'Real-time Face Recognition & GPU Rendering',
+      aiP6Desc: 'iOS real-time camera face recognition + GPUImage real-time rendering, photo-to-video composition, live filter effects, and real-time video rendering generation.',
+      bcTitle: 'Blockchain & Web3 Infrastructure',
+      bcDesc: 'Exchange-grade DEX data aggregation, multi-chain scanning (EVM block scanning + Solana Yellowstone gRPC), smart contracts, L2 networks. Leading the full-chain DeFi data pipeline from block scanning to storage, supporting high-frequency real-time queries.',
+      bcP1Name: 'On-Chain Data Service · DEX Aggregation',
+      bcP1Desc: 'Solana/BSC/Base DEX data ingestion covering pump, raydium, meteora, orca and 20+ protocols. EVM scanning + Yellowstone gRPC dual channel, Kafka cleaning, Redis real-time hotspots, SelectDB smart money analysis. K-line: early DB direct query → Redis OHLC cache + DB persistence; indicator data Redis time-bucket aggregation.',
+      bcP2Name: 'Polymarket Prediction Market Data',
+      bcP2Desc: 'Block scanning to pull Polymarket on-chain data, rate-limited official API data ingestion, running DEX-related logic.',
+      bcP3Name: 'Bitbot · Telegram Meme Trading Platform',
+      bcP3Desc: 'Base chain Meme coin custody trading system. Dexscreener/Geckoterminal new token data caching, custody wallet transaction integration. Telegram Bot (Node.js/Render) + Miniapp (Next.js/Vercel) + Admin Panel + NestJS Security Jump Server (AWS).',
+      bcP4Name: 'Meme Coin Multi-Chain Presale/Staking/Airdrop',
+      bcP4Desc: 'EVM / TON / Solana multi-chain presale, staking, airdrop distribution. BRC20 transfer parsing, Unisat API rate-limit optimization, Background Worker async processing. Projects: Poodlana, Bitcoin Dogs, Solciety.',
+      bcP5Name: 'MetaLife · Decentralized Social Network',
+      bcP5Desc: 'Serverless social via SSB protocol + Spectrum L2 (Photon) payments + multi-chain wallet. NFT marketplace (fixed price/auction), DAO (crowdfunding/proposal/voting/execution), Swap (MLT↔SMT exchange). BLE + MDNS local node discovery.',
+      bcP6Name: 'NostrV · Nostr Flutter Client',
+      bcP6Desc: 'Supports recommended relays, Lightning payments, HD Node account creation/import/export. Covers NIP 1/2/4/6/8/10/18/21/24/32/36/46/47/50/51/56/57/65.',
+      bcP7Name: 'BitCoiner · Crypto Market Tracker',
+      bcP7Desc: 'BTC & altcoin market app aggregating multi-exchange data, K-line charts, and asset monitoring. Early blockchain mobile practice.',
+      mbTitle: 'Mobile Development',
+      mbDesc: '7 years iOS native + React Native + Flutter multi-platform architecture. Led 20+ products including cross-border e-commerce, consumer finance, short video, AR effects, social, and O2O.',
+      mbP1Name: 'LOOK / LOOKMEN · Cross-border E-commerce',
+      mbP1Desc: 'LOOK client v1.9.0+ iteration: network layer restructuring, automated entity/network layer build, componentized design, JSPatch obfuscated hot updates, Ollvm obfuscation, crash defense, router design, iMessage / 3D Touch product preview, customer service (Qiyu/Huanxin).',
+      mbP2Name: 'Heika · Consumer Finance',
+      mbP2Desc: 'Credit consumption platform under RenRenYouxin Group. Led a 6-person team to deliver the full iOS client. Responsible for architecture design, network layer, shared components, home/billing/security modules.',
+      mbP3Name: '24 Frames · Photo-to-Video / Short Video',
+      mbP3Desc: 'Independently solved photo-to-video technology (GPUImage GPU acceleration), packaged SDK; audio recording & mixing, video audio tracks, preview+generation, VideoKit streaming, resumable upload. Project architecture & API design.',
+      mbP4Name: 'Ollvm Code Obfuscation Compiler',
+      mbP4Desc: 'Built Ollvm obfuscation toolchain based on LLVM 5.0 ~ 14.x to protect mobile client core logic code.',
+      mbP5Name: 'SmartMesh · Blockchain Wallet + Offline Chat',
+      mbP5Desc: 'WeChat-like blockchain wallet with offline chat (MultipeerConnectivity + MDNS), Photon Network (Raiden) payments, MDNS LAN node discovery.',
+      mbP6Name: 'MeshBox · Router Miner Controller',
+      mbP6Desc: 'Router miner app connecting to Spectrum mainnet and Photon L2. Native integration with openwrt luci, extended Ionic version with wallet support (Cordova plugins wrapping web3j / ethers.framework).',
+      mbP7Name: 'MiaShare · Community Shopping',
+      mbP7Desc: 'Post-purchase sharing community. Timeline-based display, WebView + JS bookmarking, GPUImage real-time rendering camera. Independently completed initial R&D and project framework.',
+      mbP8Name: 'PaiJiSec · AR Effect Video',
+      mbP8Desc: 'GPUImage video compositing effects app, achieving AR filter-like effects for export to international short video platforms.',
+      mbP9Name: 'XinMeng City · Local Media',
+      mbP9Desc: 'Local media operations client, built the first version for a friend\'s company. Covers news, events, and interactive modules.',
+      mbP10Name: 'BoPai · Photo to Video',
+      mbP10Desc: 'Rapid photo sequence to video generation with multiple transition animations and customizable background music.',
+      mbP11Name: 'Voice Notes',
+      mbP11Desc: 'Handwriting + audio synchronous recording tool with synchronized playback of handwriting and audio timeline.',
+      beTitle: 'Backend & System Architecture',
+      beDesc: '6 years backend experience, primarily Go / Node.js / Python. Covering microservices, data pipelines, Serverless, real-time data processing, high-frequency trading systems. Next.js + TRPC Serverless and NestJS long-process hybrid architecture.',
+      beP1Name: 'Meme Project Backend System',
+      beP1Desc: 'Next.js + TRPC + Prisma + PgSQL multi-chain (EVM/TON/Solana) presale/staking/withdrawal system. Scheduled on-chain transaction parsing, BRC20 transfer async processing (Background Worker on Render). Also maintaining Bitbot full-stack: Bot (Node.js/render) + Miniapp (Next.js/vercel) + Admin Panel + NestJS Security Jump Server (AWS).',
+      beP2Name: 'K-Line & Indicator Data Pipeline',
+      beP2Desc: 'OHLC Redis cache computation + database persistence. Indicator data Redis time-bucket aggregation, supporting exchange-grade real-time market queries.',
+      beP3Name: 'MPC Wallet & Jupiter Trading',
+      beP3Desc: 'MPC wallet paired with Jupiter native transaction aggregation, transitional development solution.',
+      rbTitle: 'Industrial Robotics & Automation',
+      rbDesc: 'As chief engineer, led hardware, software, and deployment teams for full-stack spray robot R&D, shipping 30+ units domestically and internationally. From 3D scan path planning to multi-brand robot trajectory generation, full PLC/OPC/TCP communication chain.',
+      rbP1Name: 'Intelligent Spray System',
+      rbP1Desc: 'Self-developed line scan/speckle camera 3D point cloud scanning → PCL/OpenCV/OpenNI feature extraction → border/surface trajectory planning → spray process design → multi-brand offline programming. AI (EasyDL) 2D recognition for preset trajectory switching, fully automatic mixed-line adaptation.',
+      rbP2Name: 'Robot Communication & Modular Platform',
+      rbP2Desc: 'C# WPF desktop industrial control HMI. PLC (Yaskawa MP / Beckhoff TwinCAT) + OPC + TCP + IO communication. Robot modules (ABB/Yaskawa/Keba/Nabot/Codesys self-developed), scanner module, AI module as separate DLLs in a platform architecture. Codesys ST controlling servo motors, generating trajectories for Yaskawa/Keba/Nabot and proprietary robots.',
+      rbP3Name: '3D Scanner Firmware Development',
+      rbP3Desc: 'Raspberry Pi C++ + libevent service, crontab scheduled IO detection/reset, Orbbec/Intel camera SDK integration.',
+      rbP4Name: 'Infrastructure & R&D Efficiency',
+      rbP4Desc: 'Built Git Gogs code hosting + Jitamin R&D task management; Alibaba Cloud deployment, Docker containerization + NuGet private package management.',
+      expLabel: 'EXPERIENCE',
+      expTitle: 'Career Timeline',
+      exp1Role: 'Blockchain Engineer · On-Chain Data Service',
+      exp1Remote: '· Remote Full-time',
+      exp1Highlights: '<li>OpenCode + MCP (ES/Kafka/Redis/MongoDB/SelectDB/PgSQL) with Skills &amp; AGENT.md defining boundaries and processes, supporting Lark NL queries for on-chain data</li><li>Polymarket prediction market block scanning + rate-limited official API data ingestion, running DEX-related logic</li><li>Codex / Claude Code + superpowers writing Skills to define processes and boundaries, automating DEX data parsing code modules</li><li>Solana / BSC / Base DEX data ingestion: pump (pumpfun/pumswap), raydium (clmm/cpmm/launchpad), meteora (dbc/dlmm/damm/damm v2), orca (wp/swapv2), boop, moonit, sugar, heaven, trends, pancake (v2/v3/v4/solana), uniswap (v2/v3/v4), flap, fourmeme, aerodrome (cl/slip/base), zora, dopper, clanker, flaunch and 20+ protocols</li><li>EVM block scanning + Solana Yellowstone gRPC dual-channel monitoring, data into Kafka for business service consumption and cleaning</li><li>K-line: early DB direct query → Redis OHLC cache + DB persistence; indicator data Redis time-bucket statistics</li><li>MPC wallet + Jupiter native transaction transition</li>',
+      exp2Role: 'Blockchain Backend Trading Developer',
+      exp2Company: 'Dezhou Zhaowang Technology Co., Ltd.',
+      exp2Remote: '· Remote Full-time',
+      exp2Highlights: '<li>Meme project multi-chain (EVM/TON/Solana) presale/staking/withdrawal system, Next.js + TRPC + Vercel + PgSQL</li><li>On-chain transaction wrapping special info on-chain, parsing packaged data, distributing EVM/TON/Solana/BRC20 Tokens upon expiry</li><li>Bitbot Base chain Meme trading platform: Telegram Bot (Node.js/Render) + Miniapp (Next.js/Vercel) + Admin Panel + NestJS Security Jump Server (AWS)</li><li>Dexscreener/Geckoterminal new token data Redis caching, custody wallet transaction integration</li><li>Short-term user volume 30k~1000 concurrent, stable operation supporting withdrawals/staking</li>',
+      exp3Role: 'Blockchain & Mobile App Lead',
+      exp3Remote: '· Beijing / Remote Hybrid',
+      exp3Highlights: '<li>MetaLife decentralized social: SSB protocol BLE Bluetooth communication for serverless social messaging</li><li>React Native blockchain wallet infrastructure + Spectrum L2 (Photon) integration</li><li>NFT marketplace overall architecture (fixed price + auction), DAO contracts and applications (crowdfunding/proposal/voting/execution, supporting ERC20/ERC721)</li><li>Swap contract: MLT and SMT exchange ratio setting and mutual exchange</li><li>Filecoin Titan Go SDK extension for mobile support</li>',
+      exp4Role: 'Chief Engineer',
+      exp4Company: 'Beijing Curves Intelligent Equipment Co., Ltd.',
+      exp4Highlights: '<li>Full-stack R&D of automated spray robots, 30+ units shipped domestically and internationally</li><li>WPF desktop industrial HMI + C++ OpenCV/PCL/OpenNI point cloud path planning</li><li>Yaskawa MP + IO point production line control → Codesys ST servo motors, generating trajectories for Yaskawa/Keba/Nabot and proprietary robots</li><li>Raspberry Pi libevent service + Orbbec/Intel camera SDK 3D scanning</li><li>Built Git Gogs + Jitamin + Alibaba Cloud Docker NuGet private deployment</li>',
+      exp5Role: 'Mobile Leader',
+      exp5Highlights: '<li>MeshBox router miner controller app, connecting to Spectrum mainnet and Photon L2</li><li>Mobile integration with openwrt luci; Ionic + Cordova plugin wrapping for Android web3j and iOS ethers.framework</li><li>Cross-national team collaboration for outdoor MeshBox version</li>',
+      exp6Role: 'iOS Leader',
+      exp6Company: 'Yan Zhi You Wu · LOOK / LOOKMEN',
+      exp6Highlights: '<li>LOOK client v1.9.0+: automated builds, network layer restructuring, automated entity/network layer construction, JSPatch obfuscated hot updates, componentized design</li><li>AOP localization/analytics, crash defense, Ollvm obfuscation, router design, customer service (Qiyu/Huanxin), iMessage, 3D Touch product preview</li><li>LOOKMEN client development</li>',
+      exp7Role: 'iOS Leader',
+      exp7Company: 'RenRenDai · Heika',
+      exp7Highlights: '<li>Led a 6-person R&D team to deliver the Heika client</li><li>Project architecture, network layer encapsulation, shared component development, home/billing/security core modules</li>',
+      exp8Role: 'Senior iOS Engineer · Supervisor',
+      exp8Company: 'Sohu Changyou · 2035 Game Academy',
+      exp8Highlights: '<li>Led one engineer to deliver 2035 Innovation Community &amp; Game Academy client</li><li>Responsible for login, registration, home, plaza, developer ranking and other core features</li>',
+      exp9Role: 'iOS Technical Director',
+      exp9Company: 'Beijing Xiguateng Network Technology',
+      exp9Highlights: '<li>MiaShare: community shopping platform, initially solo developed then mentored team for optimization, GPUImage real-time rendering camera</li><li>24 Frames: GPUImage GPU-accelerated photo-to-video + audio mixing + VideoKit streaming + resumable upload, independently solved technical challenges and architecture</li><li>MeiJi: photo studio online management &amp; cloud album platform, v1.0.0~2.1.1 all versions independently developed, iOS7 adaptation</li><li>YuePai: O2O photographer platform, independently developed client + backend API design + transaction system design</li>',
+      skillLabel: 'SKILLS',
+      skillTitle: 'Tech Stack',
+      skillBlockchain: 'Blockchain',
+      skillBackend: 'Backend',
+      skillDB: 'Databases',
+      skillMobile: 'Mobile',
+      skillIndustrial: 'Industrial & Robotics',
+      skillAI: 'AI Agent & Tools',
+      eduLabel: 'EDUCATION & CERTS',
+      eduTitle: 'Education',
+      edu1Name: 'Northeast Forestry University',
+      edu1Desc: 'Software Engineering · Bachelor\'s · 2021—2023',
+      edu2Name: 'Shandong Haitian Software Engineering College',
+      edu2Desc: 'Computer Application & Technology · Junior year incomplete · 2009—2012',
+      edu3Name: 'Certifications & Awards',
+      edu3Desc: 'MCP - Microsoft Certified Professional (2011)<br/>MCTS - Microsoft Certified Technology Specialist (2012)<br/>Qilu Software Competition iPhone Group 2nd Prize (2011)',
+      contactLabel: 'CONTACT',
+      contactTitle: 'Get in Touch',
+      contactDesc: 'Currently based in Jinan, seeking R&D related positions. Feel free to reach out via the following channels.',
+      footer: 'Yiqi Zhao · heroims@163.com · 2025'
+    }
+  };
+
+  function detectLang() {
+    try {
+      var saved = localStorage.getItem('resume:lang');
+      if (saved === 'zh' || saved === 'en') return saved;
+    } catch (_) {}
+    var nav = navigator.language || navigator.userLanguage || 'zh-CN';
+    return nav.toLowerCase().indexOf('zh') !== -1 ? 'zh' : 'en';
+  }
+
+  function applyLang(lang) {
+    var dict = I18N[lang];
+    if (!dict) return;
+    var html = document.documentElement;
+    html.setAttribute('data-lang', lang);
+    html.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
     });
-  }, { threshold: 0.08 });
-  els.forEach(function(el) { io.observe(el); });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    var titleEl = document.querySelector('[data-i18n="title"]');
+    if (titleEl) document.title = titleEl.textContent;
+
+    try { localStorage.setItem('resume:lang', lang); } catch (_) {}
+  }
+
+  (function() {
+    var lang = detectLang();
+    applyLang(lang);
+    var btn = document.getElementById('langToggle');
+    btn.addEventListener('click', function() {
+      var cur = document.documentElement.getAttribute('data-lang') || 'zh';
+      applyLang(cur === 'zh' ? 'en' : 'zh');
+    });
+  })();
+
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el) { io.observe(el); });
+  })();
 })();
 </script>
 
