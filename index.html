@@ -335,9 +335,9 @@ footer {
   <div class="tab-nav">
     <button class="tab-pill active" data-tab="ai" data-i18n="tabAI">AI Agent &amp; CV</button>
     <button class="tab-pill" data-tab="blockchain" data-i18n="tabBlockchain">区块链 &amp; Web3</button>
-    <button class="tab-pill" data-tab="mobile" data-i18n="tabMobile">移动端开发</button>
     <button class="tab-pill" data-tab="backend" data-i18n="tabBackend">后端 &amp; 架构</button>
     <button class="tab-pill" data-tab="robot" data-i18n="tabRobot">工业机器人</button>
+    <button class="tab-pill" data-tab="mobile" data-i18n="tabMobile">移动端开发</button>
   </div>
   <div class="tab-panels">
 
@@ -490,6 +490,95 @@ footer {
       </div>
     </div>
 
+    <div class="tab-panel" data-tab="backend">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3 data-i18n="beTitle">后端 &amp; 系统架构</h3>
+        </div>
+        <p class="card-desc" data-i18n="beDesc">
+          6 年后端开发经验，Go / Node.js / Python 为主。涵盖微服务、数据管道、Serverless、
+          实时数据处理、高频交易系统。Next.js + TRPC Serverless 与 NestJS 长进程混合架构。
+        </p>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="beP1Name">Meme 项目后端系统</span>
+            <span class="proj-desc" data-i18n="beP1Desc">
+              Next.js + TRPC + Prisma + PgSQL 多链（EVM/TON/Solana）预购/质押/提现系统。
+              链上交易信息定时拉取解析，BRC20 转账异步处理（Background Worker on Render）。
+              同步维护 Bitbot 全栈：Bot（Node.js/render）+ Miniapp（Next.js/vercel）+ 运营后台 + NestJS 安全跳板（AWS）。
+            </span>
+            <div class="proj-tech"><span>Next.js</span><span>TRPC</span><span>Prisma</span><span>PostgreSQL</span><span>NestJS</span><span>Redis</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="beP2Name">K 线 &amp; 指标数据管道</span>
+            <span class="proj-desc" data-i18n="beP2Desc">
+              开/高/收/低 Redis 缓存计算 + 数据库持久化。指标数据 Redis 时间桶聚合统计，
+              支撑交易所级实时行情查询。
+            </span>
+            <div class="proj-tech"><span>Go</span><span>Redis</span><span>SelectDB</span><span>PostgreSQL</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="beP3Name">MPC 钱包 &amp; Jupiter 交易</span>
+            <span class="proj-desc" data-i18n="beP3Desc">
+              MPC 钱包配合 Jupiter 原生交易聚合，开发中过渡方案。
+            </span>
+            <div class="proj-tech"><span>Go</span><span>Solana</span><span>Jupiter</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="robot">
+      <div class="direction-card reveal">
+        <div class="card-header" style="margin-bottom:16px;cursor:default;">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 12h12M6 12l-3-3M6 12l-3 3M18 12l3-3M18 12l3 3M12 6v12M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3"/><circle cx="12" cy="12" r="8"/></svg>
+          </div>
+          <h3 data-i18n="rbTitle">工业机器人 &amp; 自动化</h3>
+        </div>
+        <p class="card-desc" data-i18n="rbDesc">
+          作为总工带领软硬件及部署团队实现自动化喷涂机器人全栈研发，国内外累计出货 30+ 台。
+          从 3D 扫描路径规划到多品牌机器人轨迹生成、PLC/OPC/TCP 通讯全链路。
+        </p>
+        <div class="proj-list">
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="rbP1Name">智能喷涂系统</span>
+            <span class="proj-desc" data-i18n="rbP1Desc">
+              自研线扫/散斑相机 3D 点云扫描 → PCL/OpenCV/OpenNI 特征提取 → 边框/大面轨迹规划 →
+              喷涂工艺设计 → 多品牌离线编程。AI（EasyDL）2D 识别预设轨迹切换，混线全自动适配。
+            </span>
+            <div class="proj-tech"><span>C++</span><span>OpenCV</span><span>PCL</span><span>OpenNI</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="rbP2Name">机器人通讯 &amp; 模块化中台</span>
+            <span class="proj-desc" data-i18n="rbP2Desc">
+              C# WPF 桌面工控上位机。PLC（安川 MP / 倍福 TwinCAT）+ OPC + TCP + IO 点位通讯。
+              机器人模块（ABB/安川/Keba/纳博特/Codesys 自研）、扫描仪模块、AI 模块分拆 DLL 中台架构。
+              Codesys ST 语言控制伺服电机，生成安川/Keba/纳博特及自研机器人轨迹。
+            </span>
+            <div class="proj-tech"><span>C#</span><span>WPF</span><span>Codesys ST</span><span>PLC</span><span>OPC</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="rbP3Name">3D 扫描仪固件开发</span>
+            <span class="proj-desc" data-i18n="rbP3Desc">
+              树莓派上 C++ + libevent 起服务，crontab 定时 IO 检测复位，调用奥比中光/Intel 相机 SDK。
+            </span>
+            <div class="proj-tech"><span>C++</span><span>libevent</span><span>Raspberry Pi</span></div>
+          </div>
+          <div class="proj-item">
+            <span class="proj-name" data-i18n="rbP4Name">基础设施 &amp; 研发效能</span>
+            <span class="proj-desc" data-i18n="rbP4Desc">
+              搭建 Git Gogs 代码托管 + Jitamin 研发任务管理；阿里云线上部署，Docker 容器化 + NuGet 私有包管理。
+            </span>
+            <div class="proj-tech"><span>Docker</span><span>Gogs</span><span>阿里云</span><span>NuGet</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="tab-panel" data-tab="mobile">
       <div class="direction-card reveal">
         <div class="card-header" style="margin-bottom:16px;cursor:default;">
@@ -585,95 +674,6 @@ footer {
               手写 + 录音同步记录工具，笔迹与音频时间轴联动回放。
             </span>
             <div class="proj-tech"><span>Objective-C</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-panel" data-tab="backend">
-      <div class="direction-card reveal">
-        <div class="card-header" style="margin-bottom:16px;cursor:default;">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          </div>
-          <h3 data-i18n="beTitle">后端 &amp; 系统架构</h3>
-        </div>
-        <p class="card-desc" data-i18n="beDesc">
-          6 年后端开发经验，Go / Node.js / Python 为主。涵盖微服务、数据管道、Serverless、
-          实时数据处理、高频交易系统。Next.js + TRPC Serverless 与 NestJS 长进程混合架构。
-        </p>
-        <div class="proj-list">
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="beP1Name">Meme 项目后端系统</span>
-            <span class="proj-desc" data-i18n="beP1Desc">
-              Next.js + TRPC + Prisma + PgSQL 多链（EVM/TON/Solana）预购/质押/提现系统。
-              链上交易信息定时拉取解析，BRC20 转账异步处理（Background Worker on Render）。
-              同步维护 Bitbot 全栈：Bot（Node.js/render）+ Miniapp（Next.js/vercel）+ 运营后台 + NestJS 安全跳板（AWS）。
-            </span>
-            <div class="proj-tech"><span>Next.js</span><span>TRPC</span><span>Prisma</span><span>PostgreSQL</span><span>NestJS</span><span>Redis</span></div>
-          </div>
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="beP2Name">K 线 &amp; 指标数据管道</span>
-            <span class="proj-desc" data-i18n="beP2Desc">
-              开/高/收/低 Redis 缓存计算 + 数据库持久化。指标数据 Redis 时间桶聚合统计，
-              支撑交易所级实时行情查询。
-            </span>
-            <div class="proj-tech"><span>Go</span><span>Redis</span><span>SelectDB</span><span>PostgreSQL</span></div>
-          </div>
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="beP3Name">MPC 钱包 &amp; Jupiter 交易</span>
-            <span class="proj-desc" data-i18n="beP3Desc">
-              MPC 钱包配合 Jupiter 原生交易聚合，开发中过渡方案。
-            </span>
-            <div class="proj-tech"><span>Go</span><span>Solana</span><span>Jupiter</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-panel" data-tab="robot">
-      <div class="direction-card reveal">
-        <div class="card-header" style="margin-bottom:16px;cursor:default;">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24"><path d="M6 12h12M6 12l-3-3M6 12l-3 3M18 12l3-3M18 12l3 3M12 6v12M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3"/><circle cx="12" cy="12" r="8"/></svg>
-          </div>
-          <h3 data-i18n="rbTitle">工业机器人 &amp; 自动化</h3>
-        </div>
-        <p class="card-desc" data-i18n="rbDesc">
-          作为总工带领软硬件及部署团队实现自动化喷涂机器人全栈研发，国内外累计出货 30+ 台。
-          从 3D 扫描路径规划到多品牌机器人轨迹生成、PLC/OPC/TCP 通讯全链路。
-        </p>
-        <div class="proj-list">
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="rbP1Name">智能喷涂系统</span>
-            <span class="proj-desc" data-i18n="rbP1Desc">
-              自研线扫/散斑相机 3D 点云扫描 → PCL/OpenCV/OpenNI 特征提取 → 边框/大面轨迹规划 →
-              喷涂工艺设计 → 多品牌离线编程。AI（EasyDL）2D 识别预设轨迹切换，混线全自动适配。
-            </span>
-            <div class="proj-tech"><span>C++</span><span>OpenCV</span><span>PCL</span><span>OpenNI</span></div>
-          </div>
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="rbP2Name">机器人通讯 &amp; 模块化中台</span>
-            <span class="proj-desc" data-i18n="rbP2Desc">
-              C# WPF 桌面工控上位机。PLC（安川 MP / 倍福 TwinCAT）+ OPC + TCP + IO 点位通讯。
-              机器人模块（ABB/安川/Keba/纳博特/Codesys 自研）、扫描仪模块、AI 模块分拆 DLL 中台架构。
-              Codesys ST 语言控制伺服电机，生成安川/Keba/纳博特及自研机器人轨迹。
-            </span>
-            <div class="proj-tech"><span>C#</span><span>WPF</span><span>Codesys ST</span><span>PLC</span><span>OPC</span></div>
-          </div>
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="rbP3Name">3D 扫描仪固件开发</span>
-            <span class="proj-desc" data-i18n="rbP3Desc">
-              树莓派上 C++ + libevent 起服务，crontab 定时 IO 检测复位，调用奥比中光/Intel 相机 SDK。
-            </span>
-            <div class="proj-tech"><span>C++</span><span>libevent</span><span>Raspberry Pi</span></div>
-          </div>
-          <div class="proj-item">
-            <span class="proj-name" data-i18n="rbP4Name">基础设施 &amp; 研发效能</span>
-            <span class="proj-desc" data-i18n="rbP4Desc">
-              搭建 Git Gogs 代码托管 + Jitamin 研发任务管理；阿里云线上部署，Docker 容器化 + NuGet 私有包管理。
-            </span>
-            <div class="proj-tech"><span>Docker</span><span>Gogs</span><span>阿里云</span><span>NuGet</span></div>
           </div>
         </div>
       </div>
@@ -923,9 +923,9 @@ footer {
       dirTitle: '专业方向',
       tabAI: 'AI Agent & CV',
       tabBlockchain: '区块链 & Web3',
-      tabMobile: '移动端开发',
       tabBackend: '后端 & 架构',
       tabRobot: '工业机器人',
+      tabMobile: '移动端开发',
       aiTitle: 'AI Agent & 计算机视觉',
       aiDesc: '跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。',
       aiP1Name: 'Agents Report · 跨 Agent 使用统计',
@@ -1070,9 +1070,9 @@ footer {
       dirTitle: 'Professional Focus',
       tabAI: 'AI Agent & CV',
       tabBlockchain: 'Blockchain & Web3',
-      tabMobile: 'Mobile Dev',
       tabBackend: 'Backend & Arch',
       tabRobot: 'Industrial Robotics',
+      tabMobile: 'Mobile Dev',
       aiTitle: 'AI Agent & Computer Vision',
       aiDesc: 'Cross-agent usage data collection & analysis, Solana token launch AI workstation, Lark NL data query agent, industrial vision recognition, mobile real-time rendering. Integrating AI throughout the dev toolchain and visual intelligence.',
       aiP1Name: 'Agents Report · Cross-Agent Usage Stats',
