@@ -262,7 +262,7 @@ footer {
     <div><dt>30+</dt><dd data-i18n="statRobots">喷涂机器人出货</dd></div>
     <div><dt>10+</dt><dd data-i18n="statBlockchain">区块链项目</dd></div>
     <div><dt>20+</dt><dd data-i18n="statMobile">移动端产品</dd></div>
-    <div><dt>6+</dt><dd data-i18n="statAI">AI 项目</dd></div>
+    <div><dt>7+</dt><dd data-i18n="statAI">AI 项目</dd></div>
   </dl>
 </section>
 
@@ -283,6 +283,16 @@ footer {
         工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。
       </p>
       <div class="proj-list">
+        <div class="proj-item">
+          <span class="proj-name" data-i18n="aiP7Name">倪海厦中医问答 · 端侧 RAG 移动应用</span>
+          <span class="proj-desc" data-i18n="aiP7Desc">
+            离线优先的 Flutter 中医学习工具：倪海厦经方 SQLite 知识库 + 结构化检索 + RAG 问答链路，
+            llama.cpp 加载 Qwen3.5 GGUF 端侧推理，OpenAI 兼容云端优先、端侧/纯检索自动降级，回答附来源可追溯。
+            升级 llama.cpp 原生层以支持 Qwen3.5 新架构，Android/iOS 双端交付。
+          </span>
+          <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>llama.cpp</span><span>RAG</span><span>SQLite</span></div>
+          <div class="proj-links"><a href="https://github.com/heroims/nihaixia_ai" target="_blank">GitHub ↗</a></div>
+        </div>
         <div class="proj-item">
           <span class="proj-name" data-i18n="aiP1Name">Agents Report · 跨 Agent 使用统计</span>
           <span class="proj-desc" data-i18n="aiP1Desc">
@@ -857,6 +867,8 @@ footer {
       aiP5Desc: '基于百度 EasyDL 的 2D 图像识别，自动识别工件类型并切换预设喷涂轨迹，实现不同工件混线生产的全自动适配。',
       aiP6Name: '实时人脸识别 & GPU 渲染',
       aiP6Desc: 'iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。',
+      aiP7Name: '倪海厦中医问答 · 端侧 RAG 移动应用',
+      aiP7Desc: '离线优先的 Flutter 中医学习工具：倪海厦经方 SQLite 知识库 + 结构化检索 + RAG 问答链路，llama.cpp 加载 Qwen3.5 GGUF 端侧推理，OpenAI 兼容云端优先、端侧/纯检索自动降级，回答附来源可追溯。升级 llama.cpp 原生层以支持 Qwen3.5 新架构，Android/iOS 双端交付。',
       bcTitle: '区块链 & Web3 基建',
       bcDesc: '交易所级 DEX 数据聚合、多链扫描（EVM 扫块 + Solana Yellowstone gRPC）、智能合约、二层网络。主导 DeFi 数据从扫块到落库的全链路工程，支撑高频实时查询。',
       bcP1Name: '链上数据服务 · DEX 数据聚合',
@@ -999,6 +1011,8 @@ footer {
       aiP5Desc: 'Baidu EasyDL-based 2D image recognition that automatically identifies workpiece types and switches preset spray trajectories, enabling fully automatic adaptation for mixed-line production.',
       aiP6Name: 'Real-time Face Recognition & GPU Rendering',
       aiP6Desc: 'iOS real-time camera face recognition + GPUImage real-time rendering, photo-to-video composition, live filter effects, and real-time video rendering generation.',
+      aiP7Name: 'Nihaixia TCM Q&A · On-Device RAG Mobile App',
+      aiP7Desc: 'Offline-first Flutter TCM learning tool: Ni Haixia classic-formula SQLite knowledge base + structured retrieval + RAG Q&A pipeline, on-device inference via llama.cpp with Qwen3.5 GGUF, cloud-first OpenAI-compatible API with automatic fallback to on-device/retrieval, and source-traceable answers. Upgraded the llama.cpp native layer for the new Qwen3.5 architecture, shipped on both Android and iOS.',
       bcTitle: 'Blockchain & Web3 Infrastructure',
       bcDesc: 'Exchange-grade DEX data aggregation, multi-chain scanning (EVM block scanning + Solana Yellowstone gRPC), smart contracts, L2 networks. Leading the full-chain DeFi data pipeline from block scanning to storage, supporting high-frequency real-time queries.',
       bcP1Name: 'On-Chain Data Service · DEX Aggregation',
