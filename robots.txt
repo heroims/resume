@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /v1.html
+Disallow: /yiqi-resume-v2.html
+
+Sitemap: https://heroims.github.io/sitemap.xml
