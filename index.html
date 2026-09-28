@@ -403,20 +403,25 @@ footer {
           <h3 data-i18n="aiTitle">AI Agent &amp; 计算机视觉</h3>
         </div>
         <p class="card-desc" data-i18n="aiDesc">
-          跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、
-          工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。
+          主权个人 AI 数字孪生与多租户 Agent 托管平台、跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、
+          飞书自然语言数据查询 Agent、工业视觉识别、移动端实时渲染。将 AI 能力贯穿个人智能体、开发工具链与视觉智能。
         </p>
         <div class="proj-list">
           <div class="proj-item">
-            <span class="proj-name" data-i18n="aiHolonName">LingoHolon · 主权个人 AI 数字孪生</span>
+            <span class="proj-name" data-i18n="aiHolonName">LingoHolon · 主权个人 AI 数字孪生与 Agent 托管平台</span>
             <span class="proj-desc" data-i18n="aiHolonDesc">
-              本地优先的终身数字孪生：typed/provenanced 个人本体图谱 + mem0 情景记忆 + Chroma RAG 三重记忆，
-              FastAPI + 无构建 Material-3 SPA，Ollama 四档主权分层（Local/Cloud/Custom/Auto），faster-whisper 多语言语音。
-              AI×Web3 融合：ERC-8004 Agent 的 BSC 主网索引 Marketplace 与确定性信任评分、Holon 经济合约四件套、
-              BNB Greenfield 数据资本化真路径（upload→seal→grant→download）、MetaLife Stage-D 数据资本引擎。
-              遗忘权 / 审计轨迹 / 原子写入，162 测试通过。
+              本地优先的终身个人 AI 数字孪生：typed/provenanced 本体图谱 + mem0 情景记忆 + Chroma RAG
+              三重记忆统一组装做多跳问答，Ollama 四档主权分层（Local/Cloud/Custom/Auto），embedder 与
+              faster-whisper 语音常驻端侧。
+              多租户托管平台：hub / gateway / broker / egress / node 六服务共用一套 PostgreSQL，
+              以行级安全隔离租户，工具执行走三态审批策略。
+              AI×Web3：索引 BSC 主网 ERC-8004 Agent 并给出可解释信任评分，对接 BNB 官方 SDK 完成真实
+              ERC-8183 托管雇佣（create→escrow→submit→settle，无模拟路径）；完成 x402 / B402 支付协议级调研
+              （HTTP 402 挑战、EIP-3009 授权、facilitator 结算路径）并实现只读 Bazaar 服务发现，
+              对外暴露 A2A Agent Card 与 MCP 服务端。
+              遗忘权 / 审计轨迹 / 原子写入，2,500+ 测试用例，CI 含 PostgreSQL 16 矩阵、gitleaks 与 pip-audit。
             </span>
-            <div class="proj-tech"><span>Python</span><span>FastAPI</span><span>Ollama</span><span>Solidity</span><span>ERC-8004</span><span>Greenfield</span></div>
+            <div class="proj-tech"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Ollama</span><span>Solidity</span><span>ERC-8004</span><span>ERC-8183</span><span>x402</span></div>
           </div>
           <div class="proj-item">
             <span class="proj-name" data-i18n="aiP7Name">倪海厦中医问答 · 端侧 RAG 移动应用</span>
@@ -1014,7 +1019,7 @@ footer {
       tabRobot: '工业机器人',
       tabMobile: '移动端开发',
       aiTitle: 'AI Agent & 计算机视觉',
-      aiDesc: '跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、工业视觉识别、移动端实时渲染。将 AI 能力贯穿开发工具链与视觉智能。',
+      aiDesc: '主权个人 AI 数字孪生与多租户 Agent 托管平台、跨 Agent 使用数据采集与分析、Solana 智能发币 AI 工作台、飞书自然语言数据查询 Agent、工业视觉识别、移动端实时渲染。将 AI 能力贯穿个人智能体、开发工具链与视觉智能。',
       aiP1Name: 'Agents Report · 跨 Agent 使用统计',
       aiP1Desc: '采集 Claude Code / Codex / OpenCode / Cursor / Trae / OpenClaw / Hermes 七款 AI Coding Agent 使用数据，合并为统一报告并按周/月/季/年归档。附带 Flask Dashboard 与 AI 摘要。',
       aiP2Name: 'Resume Optimizer · AI 简历优化',
@@ -1029,8 +1034,8 @@ footer {
       aiP6Desc: 'iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。',
       aiP7Name: '倪海厦中医问答 · 端侧 RAG 移动应用',
       aiP7Desc: '离线优先的 Flutter 中医学习工具：倪海厦经方 SQLite 知识库 + 结构化检索 + RAG 问答链路，llama.cpp 加载 Qwen3.5 GGUF 端侧推理，OpenAI 兼容云端优先、端侧/纯检索自动降级，回答附来源可追溯。升级 llama.cpp 原生层以支持 Qwen3.5 新架构，Android/iOS 双端交付。',
-      aiHolonName: 'LingoHolon · 主权个人 AI 数字孪生',
-      aiHolonDesc: '本地优先的终身数字孪生：typed/provenanced 个人本体图谱 + mem0 情景记忆 + Chroma RAG 三重记忆，FastAPI + 无构建 Material-3 SPA，Ollama 四档主权分层（Local/Cloud/Custom/Auto），faster-whisper 多语言语音。AI×Web3 融合：ERC-8004 Agent 的 BSC 主网索引 Marketplace 与确定性信任评分、Holon 经济合约四件套、BNB Greenfield 数据资本化真路径（upload→seal→grant→download）、MetaLife Stage-D 数据资本引擎。遗忘权 / 审计轨迹 / 原子写入，162 测试通过。',
+      aiHolonName: 'LingoHolon · 主权个人 AI 数字孪生与 Agent 托管平台',
+      aiHolonDesc: '本地优先的终身个人 AI 数字孪生：typed/provenanced 本体图谱 + mem0 情景记忆 + Chroma RAG 三重记忆统一组装做多跳问答，Ollama 四档主权分层（Local/Cloud/Custom/Auto），embedder 与 faster-whisper 语音常驻端侧。多租户托管平台：hub / gateway / broker / egress / node 六服务共用一套 PostgreSQL，以行级安全隔离租户，工具执行走三态审批策略。AI×Web3：索引 BSC 主网 ERC-8004 Agent 并给出可解释信任评分，对接 BNB 官方 SDK 完成真实 ERC-8183 托管雇佣（create→escrow→submit→settle，无模拟路径）；完成 x402 / B402 支付协议级调研（HTTP 402 挑战、EIP-3009 授权、facilitator 结算路径）并实现只读 Bazaar 服务发现，对外暴露 A2A Agent Card 与 MCP 服务端。遗忘权 / 审计轨迹 / 原子写入，2,500+ 测试用例，CI 含 PostgreSQL 16 矩阵、gitleaks 与 pip-audit。',
       aiPassName: 'LingoAI-PASS · 个人数据授权与共享服务',
       aiPassDesc: '自建 OAuth2 授权服务器：客户端注册 + PKCE 授权码 + AccessToken 签发；集成 Solid Pod/WebID 去中心化身份与 AWS S3 预签名上传。共享文件状态机（草稿→共享→签署→完成）+ 电子签名 + 标签体系，面向第三方 Client 的文件同步与访问控制，内置 MCP 服务端能力与审计日志。Next.js 15 + Prisma + PostgreSQL，部署 Vercel。',
       bcTitle: '区块链 & Web3 基建',
@@ -1167,7 +1172,7 @@ footer {
       tabRobot: 'Industrial Robotics',
       tabMobile: 'Mobile Dev',
       aiTitle: 'AI Agent & Computer Vision',
-      aiDesc: 'Cross-agent usage data collection & analysis, Solana token launch AI workstation, Lark NL data query agent, industrial vision recognition, mobile real-time rendering. Integrating AI throughout the dev toolchain and visual intelligence.',
+      aiDesc: 'Sovereign personal AI digital twin & multi-tenant agent hosting platform, cross-agent usage data collection & analysis, Solana token launch AI workstation, Lark NL data query agent, industrial vision recognition, mobile real-time rendering. Integrating AI from personal agents through the dev toolchain to visual intelligence.',
       aiP1Name: 'Agents Report · Cross-Agent Usage Stats',
       aiP1Desc: 'Collects usage data from 7 AI Coding Agents: Claude Code / Codex / OpenCode / Cursor / Trae / OpenClaw / Hermes. Merged into unified reports with weekly/monthly/quarterly/yearly archives. Includes Flask Dashboard and AI summaries.',
       aiP2Name: 'Resume Optimizer · AI Resume Optimization',
@@ -1182,8 +1187,8 @@ footer {
       aiP6Desc: 'iOS real-time camera face recognition + GPUImage real-time rendering, photo-to-video composition, live filter effects, and real-time video rendering generation.',
       aiP7Name: 'Nihaixia TCM Q&A · On-Device RAG Mobile App',
       aiP7Desc: 'Offline-first Flutter TCM learning tool: Ni Haixia classic-formula SQLite knowledge base + structured retrieval + RAG Q&A pipeline, on-device inference via llama.cpp with Qwen3.5 GGUF, cloud-first OpenAI-compatible API with automatic fallback to on-device/retrieval, and source-traceable answers. Upgraded the llama.cpp native layer for the new Qwen3.5 architecture, shipped on both Android and iOS.',
-      aiHolonName: 'LingoHolon · Sovereign Personal AI Digital Twin',
-      aiHolonDesc: 'Local-first lifelong digital twin: typed/provenanced personal ontology graph + mem0 episodic memory + Chroma RAG as three memory systems; FastAPI backend with a no-build Material-3 SPA; four sovereignty tiers over Ollama (Local/Cloud/Custom/Auto); multilingual voice via faster-whisper. AI×Web3 fusion: ERC-8004 agent marketplace indexed from BSC mainnet with deterministic trust scoring, four Holon economy contracts, BNB Greenfield data-capitalization path (upload→seal→grant→download), MetaLife Stage-D data-capital engine. Right-to-forget, audit trail, atomic writes; 162 tests passing.',
+      aiHolonName: 'LingoHolon · Sovereign Personal AI Digital Twin & Agent Hosting Platform',
+      aiHolonDesc: 'Local-first lifelong personal AI digital twin: a typed/provenanced ontology graph, mem0 episodic memory and Chroma RAG assembled together for multi-hop Q&A, with four sovereignty tiers over Ollama (Local/Cloud/Custom/Auto) and the embedder and faster-whisper voice pinned on-device. Multi-tenant hosting platform: six services — hub, gateway, broker, egress, node — share one PostgreSQL with row-level security for tenant isolation, and tool execution passes a three-state approval policy. AI×Web3: indexes BSC mainnet ERC-8004 agents with explainable trust scoring, and drives real ERC-8183 escrowed hiring through the official BNB SDK (create→escrow→submit→settle, no simulated path); also completed protocol-level research on the x402 / B402 payment standard (HTTP 402 challenges, EIP-3009 authorization, facilitator settlement paths) and a read-only Bazaar discovery client, exposing A2A agent cards and an MCP server. Right-to-forget, audit trail, atomic writes; 2,500+ test cases, with a PostgreSQL 16 CI matrix, gitleaks and pip-audit.',
       aiPassName: 'LingoAI-PASS · Personal Data Authorization & Sharing Service',
       aiPassDesc: 'Self-hosted OAuth2 authorization server: client registration + PKCE authorization codes + access token issuance; integrates Solid Pod/WebID decentralized identity and AWS S3 presigned uploads. Shared-file state machine (draft→shared→review→signed→completed) with e-signatures and labels; per-client file sync and access control; built-in MCP server capability and audit logs. Next.js 15 + Prisma + PostgreSQL, deployed on Vercel.',
       bcTitle: 'Blockchain & Web3 Infrastructure',
