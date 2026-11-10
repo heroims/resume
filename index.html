@@ -408,18 +408,14 @@ footer {
         </p>
         <div class="proj-list">
           <div class="proj-item">
-            <span class="proj-name" data-i18n="aiHolonName">LingoHolon · 主权个人 AI 数字孪生与 Agent 托管平台</span>
+            <span class="proj-name" data-i18n="aiHolonName">LingoHolon · 主权个人 AI 双生体与 Agent 托管平台</span>
             <span class="proj-desc" data-i18n="aiHolonDesc">
-              本地优先的终身个人 AI 数字孪生：typed/provenanced 本体图谱 + mem0 情景记忆 + Chroma RAG
-              三重记忆统一组装做多跳问答，Ollama 四档主权分层（Local/Cloud/Custom/Auto），embedder 与
-              faster-whisper 语音常驻端侧。
-              多租户托管平台：hub / gateway / broker / egress / node 六服务共用一套 PostgreSQL，
-              以行级安全隔离租户，工具执行走三态审批策略。
-              AI×Web3：索引 BSC 主网 ERC-8004 Agent 并给出可解释信任评分，对接 BNB 官方 SDK 完成真实
-              ERC-8183 托管雇佣（create→escrow→submit→settle，无模拟路径）；完成 x402 / B402 支付协议级调研
-              （HTTP 402 挑战、EIP-3009 授权、facilitator 结算路径）并实现只读 Bazaar 服务发现，
-              对外暴露 A2A Agent Card 与 MCP 服务端。
-              遗忘权 / 审计轨迹 / 原子写入，2,500+ 测试用例，CI 含 PostgreSQL 16 矩阵、gitleaks 与 pip-audit。
+              以 typed/provenanced 本体图谱为核心的本地优先个人 AI 双生体：将 mem0 情景记忆与 Chroma
+              文档 RAG 组装为可溯源的多跳问答，Ollama 提供 Local/Cloud/Custom/Auto 四档路由，embedder
+              与 faster-whisper 保持端侧运行。多租户托管平台由 hub、gateway、broker、egress、cell、node
+              组成，共用 PostgreSQL 并以 RLS 隔离租户，工具执行经过审批、审计与幂等控制。平台同时实现
+              BSC ERC-8004 Agent 索引与解释型评分、ERC-8183 托管雇佣流程，并提供 A2A Agent Card 与 MCP
+              服务端；支持可撤回访问、遗忘权和原子持久化。
             </span>
             <div class="proj-tech"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Ollama</span><span>Solidity</span><span>ERC-8004</span><span>ERC-8183</span><span>x402</span></div>
             <div class="proj-links"><a href="https://pilot.lingoai.io/" target="_blank">Demo ↗</a><a href="https://holon.lingoai.io" target="_blank">Demo ↗</a></div>
@@ -427,9 +423,11 @@ footer {
           <div class="proj-item">
             <span class="proj-name" data-i18n="aiP7Name">倪海厦中医问答 · 端侧 RAG 移动应用</span>
             <span class="proj-desc" data-i18n="aiP7Desc">
-              离线优先的 Flutter 中医学习工具：倪海厦经方 SQLite 知识库 + 结构化检索 + RAG 问答链路，
-              llama.cpp 加载 Qwen3.5 GGUF 端侧推理，OpenAI 兼容云端优先、端侧/纯检索自动降级，回答附来源可追溯。
-              升级 llama.cpp 原生层以支持 Qwen3.5 新架构，Android/iOS 双端交付。
+              Flutter 离线优先中医学习与问答应用：将经方、条文、方剂、药材、穴位与医案整理为 SQLite
+              知识库，按意图路由和结构化字段优先检索，再以关键词召回与 Dart 侧评分组织证据。统一推理会话
+              支持纯检索、端侧 llama.cpp + Qwen3.5 GGUF、云端优先三档模式，失败自动逐级降级并保留出处。
+              引导式诊断复用同一 RAG 链路，规则引擎仅提供可解释线索；升级 llama.cpp 原生层适配 qwen35，
+              交付 Android/iOS 双端。
             </span>
             <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>llama.cpp</span><span>RAG</span><span>SQLite</span></div>
             <div class="proj-links"><a href="https://github.com/heroims/nihaixia_ai" target="_blank">GitHub ↗</a></div>
@@ -1034,9 +1032,9 @@ footer {
       aiP6Name: '实时人脸识别 & GPU 渲染',
       aiP6Desc: 'iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。',
       aiP7Name: '倪海厦中医问答 · 端侧 RAG 移动应用',
-      aiP7Desc: '离线优先的 Flutter 中医学习工具：倪海厦经方 SQLite 知识库 + 结构化检索 + RAG 问答链路，llama.cpp 加载 Qwen3.5 GGUF 端侧推理，OpenAI 兼容云端优先、端侧/纯检索自动降级，回答附来源可追溯。升级 llama.cpp 原生层以支持 Qwen3.5 新架构，Android/iOS 双端交付。',
-      aiHolonName: 'LingoHolon · 主权个人 AI 数字孪生与 Agent 托管平台',
-      aiHolonDesc: '本地优先的终身个人 AI 数字孪生：typed/provenanced 本体图谱 + mem0 情景记忆 + Chroma RAG 三重记忆统一组装做多跳问答，Ollama 四档主权分层（Local/Cloud/Custom/Auto），embedder 与 faster-whisper 语音常驻端侧。多租户托管平台：hub / gateway / broker / egress / node 六服务共用一套 PostgreSQL，以行级安全隔离租户，工具执行走三态审批策略。AI×Web3：索引 BSC 主网 ERC-8004 Agent 并给出可解释信任评分，对接 BNB 官方 SDK 完成真实 ERC-8183 托管雇佣（create→escrow→submit→settle，无模拟路径）；完成 x402 / B402 支付协议级调研（HTTP 402 挑战、EIP-3009 授权、facilitator 结算路径）并实现只读 Bazaar 服务发现，对外暴露 A2A Agent Card 与 MCP 服务端。遗忘权 / 审计轨迹 / 原子写入，2,500+ 测试用例，CI 含 PostgreSQL 16 矩阵、gitleaks 与 pip-audit。',
+      aiP7Desc: 'Flutter 离线优先中医学习与问答应用：将经方、条文、方剂、药材、穴位与医案整理为 SQLite 知识库，按意图路由和结构化字段优先检索，再以关键词召回与 Dart 侧评分组织证据。统一推理会话支持纯检索、端侧 llama.cpp + Qwen3.5 GGUF、云端优先三档模式，失败自动逐级降级并保留出处。引导式诊断复用同一 RAG 链路，规则引擎仅提供可解释线索；升级 llama.cpp 原生层适配 qwen35，交付 Android/iOS 双端。',
+      aiHolonName: 'LingoHolon · 主权个人 AI 双生体与 Agent 托管平台',
+      aiHolonDesc: '以 typed/provenanced 本体图谱为核心的本地优先个人 AI 双生体：将 mem0 情景记忆与 Chroma 文档 RAG 组装为可溯源的多跳问答，Ollama 提供 Local/Cloud/Custom/Auto 四档路由，embedder 与 faster-whisper 保持端侧运行。多租户托管平台由 hub、gateway、broker、egress、cell、node 组成，共用 PostgreSQL 并以 RLS 隔离租户，工具执行经过审批、审计与幂等控制。平台同时实现 BSC ERC-8004 Agent 索引与解释型评分、ERC-8183 托管雇佣流程，并提供 A2A Agent Card 与 MCP 服务端；支持可撤回访问、遗忘权和原子持久化。',
       aiPassName: 'LingoAI-PASS · 个人数据授权与共享服务',
       aiPassDesc: '自建 OAuth2 授权服务器：客户端注册 + PKCE 授权码 + AccessToken 签发；集成 Solid Pod/WebID 去中心化身份与 AWS S3 预签名上传。共享文件状态机（草稿→共享→签署→完成）+ 电子签名 + 标签体系，面向第三方 Client 的文件同步与访问控制，内置 MCP 服务端能力与审计日志。Next.js 15 + Prisma + PostgreSQL，部署 Vercel。',
       bcTitle: '区块链 & Web3 基建',
@@ -1187,9 +1185,9 @@ footer {
       aiP6Name: 'Real-time Face Recognition & GPU Rendering',
       aiP6Desc: 'iOS real-time camera face recognition + GPUImage real-time rendering, photo-to-video composition, live filter effects, and real-time video rendering generation.',
       aiP7Name: 'Nihaixia TCM Q&A · On-Device RAG Mobile App',
-      aiP7Desc: 'Offline-first Flutter TCM learning tool: Ni Haixia classic-formula SQLite knowledge base + structured retrieval + RAG Q&A pipeline, on-device inference via llama.cpp with Qwen3.5 GGUF, cloud-first OpenAI-compatible API with automatic fallback to on-device/retrieval, and source-traceable answers. Upgraded the llama.cpp native layer for the new Qwen3.5 architecture, shipped on both Android and iOS.',
-      aiHolonName: 'LingoHolon · Sovereign Personal AI Digital Twin & Agent Hosting Platform',
-      aiHolonDesc: 'Local-first lifelong personal AI digital twin: a typed/provenanced ontology graph, mem0 episodic memory and Chroma RAG assembled together for multi-hop Q&A, with four sovereignty tiers over Ollama (Local/Cloud/Custom/Auto) and the embedder and faster-whisper voice pinned on-device. Multi-tenant hosting platform: six services — hub, gateway, broker, egress, node — share one PostgreSQL with row-level security for tenant isolation, and tool execution passes a three-state approval policy. AI×Web3: indexes BSC mainnet ERC-8004 agents with explainable trust scoring, and drives real ERC-8183 escrowed hiring through the official BNB SDK (create→escrow→submit→settle, no simulated path); also completed protocol-level research on the x402 / B402 payment standard (HTTP 402 challenges, EIP-3009 authorization, facilitator settlement paths) and a read-only Bazaar discovery client, exposing A2A agent cards and an MCP server. Right-to-forget, audit trail, atomic writes; 2,500+ test cases, with a PostgreSQL 16 CI matrix, gitleaks and pip-audit.',
+      aiP7Desc: 'Flutter offline-first TCM learning and Q&A app: structured classical-formula, passage, formula, herb, acupoint and case data in SQLite; intent routing and structured fields lead retrieval, followed by keyword recall and Dart-side scoring. A shared inference session supports retrieval-only, on-device llama.cpp + Qwen3.5 GGUF, and cloud-first modes, with step-down fallback and source citations. Guided diagnosis reuses the same RAG path while the rule engine remains an explainable signal layer. Upgraded the llama.cpp native layer for qwen35 and shipped on Android/iOS.',
+      aiHolonName: 'LingoHolon · Sovereign Personal AI Twin & Agent Hosting Platform',
+      aiHolonDesc: 'A local-first personal AI twin centered on a typed, provenanced ontology graph: mem0 episodic memory and Chroma document RAG are assembled into traceable multi-hop Q&A. Ollama provides Local/Cloud/Custom/Auto routing, while the embedder and faster-whisper stay on-device. The multi-tenant platform spans hub, gateway, broker, egress, cell and node, sharing PostgreSQL with RLS isolation; tool execution includes approval, audit and idempotency controls. It also indexes BSC ERC-8004 agents with explainable scoring, runs the ERC-8183 escrow workflow, and exposes A2A Agent Cards and an MCP server, with revocable access, right-to-forget and atomic persistence.',
       aiPassName: 'LingoAI-PASS · Personal Data Authorization & Sharing Service',
       aiPassDesc: 'Self-hosted OAuth2 authorization server: client registration + PKCE authorization codes + access token issuance; integrates Solid Pod/WebID decentralized identity and AWS S3 presigned uploads. Shared-file state machine (draft→shared→review→signed→completed) with e-signatures and labels; per-client file sync and access control; built-in MCP server capability and audit logs. Next.js 15 + Prisma + PostgreSQL, deployed on Vercel.',
       bcTitle: 'Blockchain & Web3 Infrastructure',
