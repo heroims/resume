@@ -423,11 +423,11 @@ footer {
           <div class="proj-item">
             <span class="proj-name" data-i18n="aiP7Name">倪海厦中医问答 · 端侧 RAG 移动应用</span>
             <span class="proj-desc" data-i18n="aiP7Desc">
-              Flutter 离线优先中医学习与问答应用：将经方、条文、方剂、药材、穴位与医案整理为 SQLite
-              知识库，按意图路由和结构化字段优先检索，再以关键词召回与 Dart 侧评分组织证据。统一推理会话
-              支持纯检索、端侧 llama.cpp + Qwen3.5 GGUF、云端优先三档模式，失败自动逐级降级并保留出处。
-              引导式诊断复用同一 RAG 链路，规则引擎仅提供可解释线索；升级 llama.cpp 原生层适配 qwen35，
-              交付 Android/iOS 双端。
+              Flutter 跨平台中医知识问答应用，支持 Android/iOS，采用离线优先架构。通过 Python 工具链解析
+              Markdown 中医资料并构建 SQLite 知识库，应用侧结合 Drift、意图路由与结构化检索完成本地召回，
+              并保留原文出处，实现可追溯问答。使用 Dart FFI 集成 llama.cpp，升级原生推理层以适配 Qwen3.5
+              GGUF 模型，基于检索证据完成端侧 RAG 归纳；同时接入云端 API，设计云端优先、端侧推理与纯检索
+              的多级降级机制，在不同设备与网络条件下兼顾离线可用性和回答可核验性。
             </span>
             <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>llama.cpp</span><span>RAG</span><span>SQLite</span></div>
             <div class="proj-links"><a href="https://github.com/heroims/nihaixia_ai" target="_blank">GitHub ↗</a></div>
@@ -1032,7 +1032,7 @@ footer {
       aiP6Name: '实时人脸识别 & GPU 渲染',
       aiP6Desc: 'iOS 端实时摄像头人脸识别 + GPUImage 实时渲染，照片合成视频、实时滤镜特效、视频实时渲染生成。',
       aiP7Name: '倪海厦中医问答 · 端侧 RAG 移动应用',
-      aiP7Desc: 'Flutter 离线优先中医学习与问答应用：将经方、条文、方剂、药材、穴位与医案整理为 SQLite 知识库，按意图路由和结构化字段优先检索，再以关键词召回与 Dart 侧评分组织证据。统一推理会话支持纯检索、端侧 llama.cpp + Qwen3.5 GGUF、云端优先三档模式，失败自动逐级降级并保留出处。引导式诊断复用同一 RAG 链路，规则引擎仅提供可解释线索；升级 llama.cpp 原生层适配 qwen35，交付 Android/iOS 双端。',
+      aiP7Desc: 'Flutter 跨平台中医知识问答应用，支持 Android/iOS，采用离线优先架构。通过 Python 工具链解析 Markdown 中医资料并构建 SQLite 知识库，应用侧结合 Drift、意图路由与结构化检索完成本地召回，并保留原文出处，实现可追溯问答。使用 Dart FFI 集成 llama.cpp，升级原生推理层以适配 Qwen3.5 GGUF 模型，基于检索证据完成端侧 RAG 归纳；同时接入云端 API，设计云端优先、端侧推理与纯检索的多级降级机制，在不同设备与网络条件下兼顾离线可用性和回答可核验性。',
       aiHolonName: 'LingoHolon · 主权个人 AI 双生体与 Agent 托管平台',
       aiHolonDesc: '以 typed/provenanced 本体图谱为核心的本地优先个人 AI 双生体：将 mem0 情景记忆与 Chroma 文档 RAG 组装为可溯源的多跳问答，Ollama 提供 Local/Cloud/Custom/Auto 四档路由，embedder 与 faster-whisper 保持端侧运行。多租户托管平台由 hub、gateway、broker、egress、cell、node 组成，共用 PostgreSQL 并以 RLS 隔离租户，工具执行经过审批、审计与幂等控制。平台同时实现 BSC ERC-8004 Agent 索引与解释型评分、ERC-8183 托管雇佣流程，并提供 A2A Agent Card 与 MCP 服务端；支持可撤回访问、遗忘权和原子持久化。',
       aiPassName: 'LingoAI-PASS · 个人数据授权与共享服务',
@@ -1185,7 +1185,7 @@ footer {
       aiP6Name: 'Real-time Face Recognition & GPU Rendering',
       aiP6Desc: 'iOS real-time camera face recognition + GPUImage real-time rendering, photo-to-video composition, live filter effects, and real-time video rendering generation.',
       aiP7Name: 'Nihaixia TCM Q&A · On-Device RAG Mobile App',
-      aiP7Desc: 'Flutter offline-first TCM learning and Q&A app: structured classical-formula, passage, formula, herb, acupoint and case data in SQLite; intent routing and structured fields lead retrieval, followed by keyword recall and Dart-side scoring. A shared inference session supports retrieval-only, on-device llama.cpp + Qwen3.5 GGUF, and cloud-first modes, with step-down fallback and source citations. Guided diagnosis reuses the same RAG path while the rule engine remains an explainable signal layer. Upgraded the llama.cpp native layer for qwen35 and shipped on Android/iOS.',
+      aiP7Desc: 'Flutter cross-platform TCM knowledge Q&A app for Android/iOS, built with an offline-first architecture. A Python toolchain parses Markdown TCM materials and builds a SQLite knowledge base; the app uses Drift, intent routing and structured retrieval for local recall while preserving original sources for traceable answers. Integrated llama.cpp through Dart FFI and upgraded the native inference layer for Qwen3.5 GGUF models, using retrieved evidence for on-device RAG synthesis. Also supports cloud APIs with a tiered fallback from cloud-first to on-device inference and retrieval-only mode, balancing offline availability with verifiable answers across devices and network conditions.',
       aiHolonName: 'LingoHolon · Sovereign Personal AI Twin & Agent Hosting Platform',
       aiHolonDesc: 'A local-first personal AI twin centered on a typed, provenanced ontology graph: mem0 episodic memory and Chroma document RAG are assembled into traceable multi-hop Q&A. Ollama provides Local/Cloud/Custom/Auto routing, while the embedder and faster-whisper stay on-device. The multi-tenant platform spans hub, gateway, broker, egress, cell and node, sharing PostgreSQL with RLS isolation; tool execution includes approval, audit and idempotency controls. It also indexes BSC ERC-8004 agents with explainable scoring, runs the ERC-8183 escrow workflow, and exposes A2A Agent Cards and an MCP server, with revocable access, right-to-forget and atomic persistence.',
       aiPassName: 'LingoAI-PASS · Personal Data Authorization & Sharing Service',
